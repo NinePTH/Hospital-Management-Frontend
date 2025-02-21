@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:1323";
+const API_URL = "https://go-mvc-s.onrender.com";
 
 export const api = axios.create({
     baseURL: API_URL,
