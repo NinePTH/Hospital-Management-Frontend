@@ -12,10 +12,10 @@ export const api = axios.create({
 // Set token in header
 export const setAuthToken = (token: string | null) => {
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem("myApp_authToken", token);
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
-      localStorage.removeItem("token");
+      localStorage.removeItem("myApp_authToken");
       delete api.defaults.headers.common["Authorization"];
     }
   };

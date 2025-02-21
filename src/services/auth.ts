@@ -36,7 +36,7 @@ export const fetchProfile = async () => {
         logoutUser();
         throw new Error("Token expired");
       }
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("myApp_authToken");
     const response = await api.get("/profile",
         { headers: {Authorization: `Bearer ${token}`} }
     );
@@ -48,7 +48,7 @@ export const fetchProfile = async () => {
         logoutUser();
         throw new Error("Token expired");
       }
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("myApp_authToken");
     const response = await api.get("/patient",
         { headers: {Authorization: `Bearer ${token}`} }
     );
@@ -56,7 +56,7 @@ export const fetchProfile = async () => {
   };
 
   export const isTokenExpired = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("myApp_authToken");
     if (!token) return true;
   
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
