@@ -1,22 +1,15 @@
-import React from "react"
-import { BrowserRouter as Router, Routes, Route,Navigate  } from "react-router-dom";
-// import Head from "./components/Head"
-// import FetchUsers from "./components/FetchPosts"
-import Auth from "./pages/Auth";
-import Profile from "./pages/Profile";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import { AuthProvider } from "./contexts/AuthContext";
 
-const isAuthenticated = !!localStorage.getItem("token"); // ✅ Check if user is logged in
-
-const App: React.FC = () => {
-
+const App = () => {
   return (
-        <Router>
-            <Routes>
-            <Route path="/" element={<Auth />} />
-            <Route path="/profile" element={isAuthenticated ? <Profile /> : <Navigate to="/" />} />
-            </Routes>
-        </Router>
-  )
-}
+    <AuthProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
+  );
+};
 
-export default App
+export default App;

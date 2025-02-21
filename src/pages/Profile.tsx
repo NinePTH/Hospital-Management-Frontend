@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchProfile, logoutUser } from "../services/auth";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Profile = () => {
-  const [profile, setProfile] = useState("");
-  const navigate = useNavigate(); // ✅ Add this
+  const [profile, setProfile] = useState<string | null>("");
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     const getProfile = async () => {
@@ -12,7 +14,7 @@ const Profile = () => {
         const data = await fetchProfile();
         setProfile(data.username);
       } catch {
-        setProfile("Unauthorized");
+        setProfile(null);
       }
     };
     getProfile();
@@ -20,7 +22,8 @@ const Profile = () => {
 
   const handleLogout = () => {
     logoutUser();
-    navigate("/"); // ✅ Redirect to login after logout
+    auth?.setAuthenticated(false);
+    navigate("/");
   };
 
   return (

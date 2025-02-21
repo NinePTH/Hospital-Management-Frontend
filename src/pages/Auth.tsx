@@ -1,28 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../services/auth";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Auth = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); // ✅ Add this
+  const navigate = useNavigate(); 
+  const auth = useContext(AuthContext);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (isLogin) {
         await loginUser(username, password);
+        auth?.setAuthenticated(true);
         setMessage("Login successful! Redirecting...");
-        navigate("/profile"); // ✅ Redirect after login
+        navigate("/profile");
       } else {
         await registerUser(username, password);
         setMessage("Registration successful! Please login.");
         setIsLogin(true);
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      setMessage(error.response?.data?.error || "An error occurred");
+      setMessage(error.response?.data?.error || "Wrong Username or Password");
     }
   };
 
