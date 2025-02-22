@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "https://go-mvc-s.onrender.com";
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL || import.meta.env.BASE_API_URL;
 
 export const api = axios.create({
-    baseURL: API_URL,
+    baseURL: BASE_API_URL,
     headers: {
         "Content-Type": "application/json"
     }
