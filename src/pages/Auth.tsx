@@ -1,20 +1,18 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../services/auth";
 import { AuthContext } from "../contexts/AuthContext";
+import AuthForm from "../components/AuthForm";
 
 const Auth = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLoginForm, setIsLoginForm] = useState(true);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const auth = useContext(AuthContext);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleAuth = async (username: string, password: string) => {
     try {
-      if (isLogin) {
+      if (isLoginForm) {
         await loginUser(username, password);
         auth?.setAuthenticated(true);
         setMessage("Login successful! Redirecting...");
@@ -22,26 +20,28 @@ const Auth = () => {
       } else {
         await registerUser(username, password);
         setMessage("Registration successful! Please login.");
-        setIsLogin(true);
+        setIsLoginForm(true);
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setMessage(error.response?.data?.error || "Wrong Username or Password");
     }
   };
 
   return (
-    <div>
-      <h2>{isLogin ? "Login" : "Register"}</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">{isLogin ? "Login" : "Register"}</button>
-      </form>
-      <p onClick={() => setIsLogin(!isLogin)}>
-        {isLogin ? "Don't have an account? Register" : "Already have an account? Login"}
-      </p>
-      {message && <p>{message}</p>}
+    <div className="h-dvh flex flex-col items-center justify-center bg-[url(background.png)]  bg-cover bg-center bg-no-repeat">
+        <div className="flex flex-col items-center justify-center border border-[#ACACAC] rounded-md w-1/3 h-3/5 lg:max-w-[350px] lg:max-h-[450px] md:p-10 lg:p-12 bg-white">
+          <h2 className="lg:text-4xl lg:mb-2 font-playfair">
+            {isLoginForm ? "Login" : "Register"}
+          </h2>
+          <h3 className="lg:text-xl">Siam Hospital</h3>
+          <AuthForm
+            onSubmit={handleAuth}
+            isLogin={isLoginForm}
+            setIsLoginForm={setIsLoginForm}
+          />
+          {message && <p>{message}</p>}
+        </div>
     </div>
   );
 };
