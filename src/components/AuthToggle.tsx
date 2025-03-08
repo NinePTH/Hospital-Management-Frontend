@@ -9,11 +9,11 @@ const AuthToggle: React.FC<AuthToggleProps> = ({ isLoginForm, setIsLoginForm }) 
   return (
     <div onClick={() => setIsLoginForm(!isLoginForm)} className="select-none">
       {isLoginForm ? (
-        <div className="text-sm text-center">
+        <div className="text-xs md:text-sm text-center">
             Don't have an account? <span className="text-[#2C6975] underline cursor-pointer">Register</span>
         </div>
       ) : (
-        <div className="text-sm text-center">
+        <div className="text-xs md:text-sm text-center">
             Already have an account? <span className="text-[#2C6975] underline cursor-pointer">Login</span>
         </div>
       )}

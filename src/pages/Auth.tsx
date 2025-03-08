@@ -32,11 +32,11 @@ const Auth = () => {
   return (
     <div className="h-dvh flex flex-col items-center justify-center bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
         <Navbar />
-        <div className="flex flex-col items-center justify-center border border-[#ACACAC] rounded-md w-1/3 h-3/5 lg:max-w-[350px] lg:max-h-[450px] md:p-10 lg:p-12 bg-white">
-          <h2 className="lg:text-4xl lg:mb-2 font-playfair">
+        <div className="flex flex-col items-center justify-center border border-[#ACACAC] rounded-md w-2/3 md:w-2/5 lg:w-1/3 h-3/5 lg:max-w-[350px] lg:max-h-[450px] p-10 md:p-10 lg:p-12 bg-white">
+          <h2 className="text-3xl mb-1 lg:text-4xl lg:mb-2 font-playfair">
             {isLoginForm ? "Login" : "Register"}
           </h2>
-          <h3 className="lg:text-xl">Siam Hospital</h3>
+          <h3 className="mb-1 md:mb-2 lg:text-xl">Siam Hospital</h3>
           <AuthForm
             onSubmit={handleAuth}
             isLogin={isLoginForm}
