@@ -42,7 +42,7 @@ const Auth = () => {
             isLogin={isLoginForm}
             setIsLoginForm={setIsLoginForm}
           />
-          {message && <p className="text-red-600 text-center">{message}</p>}
+          {message && <p className="text-sm md:text-base text-red-600 text-center">{message}</p>}
         </div>
     </div>
   );
