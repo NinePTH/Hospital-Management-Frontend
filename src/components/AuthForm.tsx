@@ -38,7 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           className="text-sm border border-[#ACACAC] rounded-md md:py-1 md:px-2 lg:py-2 lg:px-4 mb-4"
         />
         <AuthToggle isLoginForm={isLogin} setIsLoginForm={setIsLoginForm} />
-        <button type="submit" className="bg-[#2C6975] text-white md:py-1 md:px-1 lg:py-2 ;g:px-2 rounded-md mt-4">{isLogin ? "Login" : "Register"}</button>
+        <button type="submit" className="bg-[#2C6975] text-white md:py-1 md:px-1 lg:py-2 ;g:px-2 rounded-md mt-4 active:scale-95 active:bg-[#25444e] transition duration-150">{isLogin ? "Login" : "Register"}</button>
       </div>
     </form>
   );

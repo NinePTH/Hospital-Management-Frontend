@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../services/auth";
 import { AuthContext } from "../contexts/AuthContext";
 import AuthForm from "../components/AuthForm";
+import Navbar from "../components/Navbar";
 
 const Auth = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -30,6 +31,7 @@ const Auth = () => {
 
   return (
     <div className="h-dvh flex flex-col items-center justify-center bg-[url(background.png)]  bg-cover bg-center bg-no-repeat">
+        <Navbar />
         <div className="flex flex-col items-center justify-center border border-[#ACACAC] rounded-md w-1/3 h-3/5 lg:max-w-[350px] lg:max-h-[450px] md:p-10 lg:p-12 bg-white">
           <h2 className="lg:text-4xl lg:mb-2 font-playfair">
             {isLoginForm ? "Login" : "Register"}
@@ -40,7 +42,7 @@ const Auth = () => {
             isLogin={isLoginForm}
             setIsLoginForm={setIsLoginForm}
           />
-          {message && <p>{message}</p>}
+          {message && <p className="text-red-600">{message}</p>}
         </div>
     </div>
   );
