@@ -30,7 +30,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="h-dvh flex flex-col items-center justify-center bg-[url(/background.png)]  bg-cover bg-center bg-no-repeat">
+    <div className="h-dvh flex flex-col items-center justify-center bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
         <Navbar />
         <div className="flex flex-col items-center justify-center border border-[#ACACAC] rounded-md w-1/3 h-3/5 lg:max-w-[350px] lg:max-h-[450px] md:p-10 lg:p-12 bg-white">
           <h2 className="lg:text-4xl lg:mb-2 font-playfair">
