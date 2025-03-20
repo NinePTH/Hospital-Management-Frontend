@@ -1,18 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import Auth from "../pages/Auth";
 import Profile from "../pages/Profile";
-import ProtectedRoute from "../components/ProtectedRoute";
+// import ProtectedRoute from "../components/ProtectedRoute";
+import RoleBasedRoute from "../components/RoleBasedRoute";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Auth />} />
       <Route
-        path="/profile"
+        path="/patient-profile"
         element={
-          <ProtectedRoute>
+          <RoleBasedRoute allowedRoles={["patient"]}>
             <Profile />
-          </ProtectedRoute>
+          </RoleBasedRoute>
         }
       />
     </Routes>

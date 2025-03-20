@@ -20,6 +20,13 @@ export const loginUser = async (username: string, password: string) => {
     const response = await api.post<LoginResponse>("/login", { username, password });
     const token = response.data.token;
     setAuthToken(token); // Store token
+
+    // Decode token to get user role
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const decoded: any = jwtDecode(token);
+    localStorage.setItem("myApp_userRole", decoded.role);
+    console.log(decoded.role);
+
     await new Promise((resolve) => setTimeout(resolve, 100)); // Wait for token to be set
     return response.data;
   };

@@ -17,7 +17,19 @@ const Auth = () => {
         await loginUser(username, password);
         auth?.setAuthenticated(true);
         setMessage("Login successful! Redirecting...");
-        navigate("/profile");
+        switch (auth?.userRole) {
+          case "patient":
+            navigate("/patient-profile");
+            break;
+          case "HR":
+            navigate("/employees-management");
+            break;
+          case "medical_personal":
+            navigate("/patients-management");
+            break;
+          default:
+            break;
+        }
       } else {
         await registerUser(username, password);
         setMessage("Registration successful! Please login.");

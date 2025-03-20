@@ -5,6 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const Profile = () => {
   const [profile, setProfile] = useState<string | null>("");
+  const [role, setRole] = useState<string | null>("");
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
 
@@ -13,7 +14,9 @@ const Profile = () => {
       try {
         const data = await fetchProfile();
         setProfile(data.username);
+        setRole(data.role);
       } catch {
+        setRole(null);
         setProfile(null);
       }
     };
@@ -30,6 +33,7 @@ const Profile = () => {
     <div>
       <h2>Profile</h2>
       <p>{profile}</p>
+      <p>{role}</p>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
