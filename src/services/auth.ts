@@ -10,8 +10,8 @@ interface LoginResponse {
 }
 
 // Register user
-export const registerUser = async (username: string, password: string) => {
-    const response = await api.post<RegisterResponse>("/register", { username, password });
+export const registerUser = async (username: string, password: string, role: string | undefined, id: string | undefined) => {
+    const response = await api.post<RegisterResponse>("/register", { username, password, role, id });
     return response.data;
 };
 
