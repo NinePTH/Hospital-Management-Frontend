@@ -19,6 +19,7 @@ const Auth = () => {
         auth?.setAuthenticated(true);
         setMessage("Login successful! Redirecting...");
         setMessageStyle("text-sm text-green-600 text-center");
+        await new Promise((resolve) => setTimeout(resolve, 500));
         switch (auth?.userRole) {
           case "patient":
             navigate("/patient-profile");

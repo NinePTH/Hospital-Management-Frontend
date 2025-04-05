@@ -27,7 +27,7 @@ export const loginUser = async (username: string, password: string) => {
     localStorage.setItem("myApp_userRole", decoded.role);
     console.log("Your Role is:",decoded.role);
 
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait for token to be set
+    // await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for token to be set
     return response.data;
   };
 
