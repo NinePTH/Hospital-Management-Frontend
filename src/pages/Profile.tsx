@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchProfile, logoutUser } from "../services/auth";
-import { AuthContext } from "../contexts/AuthContext";
+import { useEffect, useState } from "react";
+import { fetchProfile } from "../services/auth";
 import { fetchUserPatient } from "../services/patient";
+import Navbar from "../components/Navbar";
 
 interface UserProfile {
   username: string;
@@ -30,9 +29,6 @@ const Profile = () => {
   const [patientData, setPatientData] = useState<PatientData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  const navigate = useNavigate();
-  const auth = useContext(AuthContext);
 
   useEffect(() => {
     const getProfile = async () => {
@@ -75,18 +71,12 @@ const Profile = () => {
   }, []);
 
   // If you want to see the updated patientData, use useEffect with patientData dependency
-useEffect(() => {
-  if (patientData) {
-    console.log("This patient data:", patientData);
-    // Now you can see the actual updated patientData
-  }
-}, [patientData]);
-
-  const handleLogout = () => {
-    logoutUser();
-    auth?.setAuthenticated(false);
-    navigate("/");
-  };
+  useEffect(() => {
+    if (patientData) {
+      console.log("This patient data:", patientData);
+      // Now you can see the actual updated patientData
+    }
+  }, [patientData]);
 
   if (isLoading) {
     return <div>Loading profile...</div>;
@@ -97,25 +87,65 @@ useEffect(() => {
   }
 
   return (
-    <div>
-      <p>
-        <strong>Username:</strong> {profile?.username}
-      </p>
-      <p>
-        <strong>Patient ID:</strong> {profile?.patient_id}
-      </p>
-      <p>
-        <strong>Role:</strong> {profile?.role}
-      </p>
-      {patientData && (
-        <div className="patient-details">
-          <h3>Patient Information</h3>
+    <div className="min-h-screen md:h-dvh flex flex-col items-center justify-center bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
+      <Navbar />
+      <div className="flex flex-row items-start justify-center gap-10 border border-[#ACACAC] rounded-md w-2/3 md:w-2/5 lg:w-2/3 h-3/5 lg:h-5/6 lg:max-w-[1000px] lg:max-h-[525px] p-10 md:p-10 lg:p-12 bg-white">
+        <div className="text-left w-full">
           <p>
-            <strong>Patient Name:</strong> {patientData.first_name}{" "}{patientData.last_name}
+            Username: {profile?.username}
           </p>
+          <p>
+            Patient ID: {profile?.patient_id}
+          </p>
+          <p>
+            Role: {profile?.role}
+          </p>
+          {patientData && (
+            <>
+              {/* <h3>Patient Information</h3> */}
+              <p>
+                First Name: {patientData.first_name}
+              </p>
+              <p>
+                Last Name: {patientData.last_name}
+              </p>
+              <p>
+                Age: {patientData.age}
+              </p>
+              <p>
+                Gender: {patientData.gender}
+              </p>
+              <p>
+                Blood Type: {patientData.blood_type}
+              </p>
+              <p>
+                Email: {patientData.email}
+              </p>
+              <p>
+                Health Insurance: {patientData.health_insurance ? "Yes" : "No"}
+              </p>
+              <p>
+                Address: {patientData.address}
+              </p>
+              <p>
+                Phone number: {patientData.phone_number}
+              </p>
+              <p>
+                ID card number: {patientData.id_card_number}
+              </p>
+              <p>
+                Ongoing treatment: {patientData.ongoing_treatment}
+              </p>
+            </>
+          )}
+              <p className="mt-3">Contact the <u className="text-[#2C6975]">Help Desk</u> if needed</p>
         </div>
-      )}
-      <button onClick={handleLogout}>Logout</button>
+        <div className="border-l solid h-full max-h-96 mt-1"></div>
+        <div className="text-left w-full">
+          <p>Joe Mama</p>
+          <p>I'm to lazy too complete this</p>
+        </div>
+      </div>
     </div>
   );
 };

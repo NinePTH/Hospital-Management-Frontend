@@ -50,18 +50,6 @@ export const fetchProfile = async () => {
   return response.data;
 };
 
-export const fetchPatient = async () => {
-  if (isTokenExpired()) {
-    logoutUser();
-    throw new Error("Token expired");
-  }
-  const token = localStorage.getItem("myApp_authToken");
-  const response = await api.get("/patient",
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-  return response.data;
-};
-
 export const isTokenExpired = () => {
   const token = localStorage.getItem("myApp_authToken");
   if (!token) return true;
