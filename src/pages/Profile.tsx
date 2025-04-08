@@ -87,9 +87,9 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen md:h-dvh flex flex-col items-center justify-center bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
+    <div className="min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[9.5%] lg:pb-[4%]  bg-[url(/background.webp)] bg-cover bg-center bg-no-repeat">
       <Navbar />
-      <div className="flex flex-row items-start justify-center gap-10 border border-[#ACACAC] rounded-md w-2/3 md:w-2/5 lg:w-2/3 h-3/5 lg:h-5/6 lg:max-w-[1000px] lg:max-h-[525px] p-10 md:p-10 lg:p-12 bg-white">
+      <div className="flex flex-col lg:flex-row items-start justify-center gap-10 border border-[#ACACAC] rounded-md w-fit h-fit p-10 md:p-10 lg:p-12 bg-white">
         <div className="text-left w-full">
           <p>
             Username: {profile?.username}
@@ -138,9 +138,9 @@ const Profile = () => {
               </p>
             </>
           )}
-              <p className="mt-3">Contact the <u className="text-[#2C6975]">Help Desk</u> if needed</p>
+              <p className="mt-3">Contact the <u className="text-[#2C6975] cursor-pointer">Help Desk</u> if needed</p>
         </div>
-        <div className="border-l solid h-full max-h-96 mt-1"></div>
+        <div className="border-y h-1/2 w-full lg:w-0 lg:border-r-0 lg:border-l lg:h-[388px] lg:mt-1 border-[#ACACAC]"></div> {/* ใส่ lg:h-full ไม่ได้ไม่รู้เป็นไร */}
         <div className="text-left w-full">
           <p>Joe Mama</p>
           <p>I'm to lazy too complete this</p>
