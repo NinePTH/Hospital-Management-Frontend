@@ -24,7 +24,7 @@ interface PatientData {
   ongoing_treatment: string;
 }
 
-const Profile = () => {
+const MyInfo = () => {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [patientData, setPatientData] = useState<PatientData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -150,4 +150,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default MyInfo;

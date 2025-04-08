@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Auth from "../pages/Auth";
-import Profile from "../pages/Profile";
+import MyInfo from "../pages/MyInfo";
 // import ProtectedRoute from "../components/ProtectedRoute";
 import RoleBasedRoute from "../components/RoleBasedRoute";
 
@@ -12,7 +12,7 @@ const AppRoutes = () => {
         path="/patient-profile"
         element={
           <RoleBasedRoute allowedRoles={["patient"]}>
-            <Profile />
+            <MyInfo />
           </RoleBasedRoute>
         }
       />
