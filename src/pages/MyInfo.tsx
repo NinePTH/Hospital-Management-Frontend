@@ -79,11 +79,21 @@ const MyInfo = () => {
   }, [patientData]);
 
   if (isLoading) {
-    return <div>Loading profile...</div>;
+    <div className="min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[9.5%] lg:pb-[4%]  bg-[url(/background.webp)] bg-cover bg-center bg-no-repeat">
+      <Navbar />
+      <div className="flex flex-col items-start justify-center border border-[#ACACAC] rounded-md w-fit h-fit p-10 md:p-10 lg:p-12 bg-white">
+          <p>Loading profile...</p>
+      </div>
+    </div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    <div className="min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[9.5%] lg:pb-[4%]  bg-[url(/background.webp)] bg-cover bg-center bg-no-repeat">
+      <Navbar />
+      <div className="flex flex-col items-start justify-center border border-[#ACACAC] rounded-md w-fit h-fit p-10 md:p-10 lg:p-12 bg-white">
+          <p>Error: {error}</p>
+      </div>
+    </div>;
   }
 
   return (
@@ -91,56 +101,34 @@ const MyInfo = () => {
       <Navbar />
       <div className="flex flex-col lg:flex-row items-start justify-center gap-10 border border-[#ACACAC] rounded-md w-fit h-fit p-10 md:p-10 lg:p-12 bg-white">
         <div className="text-left w-full">
-          <p>
-            Username: {profile?.username}
-          </p>
-          <p>
-            Patient ID: {profile?.patient_id}
-          </p>
-          <p>
-            Role: {profile?.role}
-          </p>
+          <p>Username: {profile?.username}</p>
+          <p>Patient ID: {profile?.patient_id}</p>
+          <p>Role: {profile?.role}</p>
           {patientData && (
             <>
               {/* <h3>Patient Information</h3> */}
-              <p>
-                First Name: {patientData.first_name}
-              </p>
-              <p>
-                Last Name: {patientData.last_name}
-              </p>
-              <p>
-                Age: {patientData.age}
-              </p>
-              <p>
-                Gender: {patientData.gender}
-              </p>
-              <p>
-                Blood Type: {patientData.blood_type}
-              </p>
-              <p>
-                Email: {patientData.email}
-              </p>
+              <p>First Name: {patientData.first_name}</p>
+              <p>Last Name: {patientData.last_name}</p>
+              <p>Age: {patientData.age}</p>
+              <p>Gender: {patientData.gender}</p>
+              <p>Blood Type: {patientData.blood_type}</p>
+              <p>Email: {patientData.email}</p>
               <p>
                 Health Insurance: {patientData.health_insurance ? "Yes" : "No"}
               </p>
-              <p>
-                Address: {patientData.address}
-              </p>
-              <p>
-                Phone number: {patientData.phone_number}
-              </p>
-              <p>
-                ID card number: {patientData.id_card_number}
-              </p>
-              <p>
-                Ongoing treatment: {patientData.ongoing_treatment}
-              </p>
+              <p>Address: {patientData.address}</p>
+              <p>Phone number: {patientData.phone_number}</p>
+              <p>ID card number: {patientData.id_card_number}</p>
+              <p>Ongoing treatment: {patientData.ongoing_treatment}</p>
             </>
           )}
-              <p className="mt-3">Contact the <u className="text-[#2C6975] cursor-pointer">Help Desk</u> if needed</p>
+          <p className="mt-3">
+            Contact the{" "}
+            <u className="text-[#2C6975] cursor-pointer">Help Desk</u> if needed
+          </p>
         </div>
-        <div className="border-y h-1/2 w-full lg:w-0 lg:border-r-0 lg:border-l lg:h-[388px] lg:mt-1 border-[#ACACAC]"></div> {/* ใส่ lg:h-full ไม่ได้ไม่รู้เป็นไร */}
+        <div className="border-y h-1/2 w-full lg:w-0 lg:border-r-0 lg:border-l lg:h-[388px] lg:mt-1 border-[#ACACAC]"></div>{" "}
+        {/* ใส่ lg:h-full ไม่ได้ไม่รู้เป็นไร */}
         <div className="text-left w-full">
           <p>Joe Mama</p>
           <p>I'm to lazy too complete this</p>
