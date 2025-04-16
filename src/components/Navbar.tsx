@@ -20,15 +20,16 @@ const Navbar: React.FC = () => {
           Siam Hospital
         </p>
 
-        <ul className="flex space-x-6">
+        {/* <ul className="flex space-x-6">
           <li><Link to="/" className="hover:text-[#2C6975]">Home</Link></li>
           <li><Link to="/" className="hover:text-[#2C6975]">About</Link></li>
           <li><Link to="/" className="hover:text-[#2C6975]">Login</Link></li>
-        </ul>
-
-        <button onClick={handleLogout} className="bg-[#2C6975] text-white py-1 px-1 lg:px-6 rounded-md active:scale-95 active:bg-[#25444e] transition duration-150">
+        </ul> */}
+        {
+        auth?.isAuthenticated && <button onClick={handleLogout} className="bg-[#2C6975] text-white py-1 px-1 lg:px-6 rounded-md active:scale-95 active:bg-[#25444e] transition duration-150">
           Logout
         </button>
+        }
       </div>
     </nav>
   );
