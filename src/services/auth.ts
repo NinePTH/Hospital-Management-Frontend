@@ -23,12 +23,10 @@ export const loginUser = async (username: string, password: string) => {
 
   // Decode token to get user role
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const decoded: any = jwtDecode(token);
+  const decoded: any = await jwtDecode(token);
   localStorage.setItem("myApp_userRole", decoded.role);
-  console.log("Your Role is:", decoded.role);
 
-  // await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for token to be set
-  return response.data;
+  return decoded.role;
 };
 
 

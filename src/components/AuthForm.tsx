@@ -34,14 +34,14 @@ const AuthForm: React.FC<AuthFormProps> = ({
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4"
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
         <label className="text-sm lg:text-md">Password</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4"
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
         
         {/* Only show role and ID fields on registration form */}
@@ -63,7 +63,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               type="text"
               value={id}
               onChange={(e) => setId(e.target.value)}
-              className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4"
+              className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
               placeholder="Employee ID/Patient ID"
             />
           </>

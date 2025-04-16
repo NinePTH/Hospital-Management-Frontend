@@ -36,9 +36,6 @@ const MyInfo = () => {
       try {
         const data = await fetchProfile();
         setProfile(data);
-
-        // Only fetch patient data if patient_id exists
-        if (data.patient_id) {
           try {
             const patientDataFromApi = await fetchUserPatient(data.patient_id);
             console.log(patientDataFromApi);
@@ -51,7 +48,7 @@ const MyInfo = () => {
             console.error(errorMessage);
             setError("Could not load patient information");
           }
-        }
+        
       } catch (err: unknown) {
         const errorMessage =
           err instanceof Error ? err.message : "Failed to fetch profile";
@@ -69,14 +66,6 @@ const MyInfo = () => {
 
     getProfile();
   }, []);
-
-  // If you want to see the updated patientData, use useEffect with patientData dependency
-  useEffect(() => {
-    if (patientData) {
-      console.log("This patient data:", patientData);
-      // Now you can see the actual updated patientData
-    }
-  }, [patientData]);
 
   if (isLoading) {
     <div className="min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[9.5%] lg:pb-[4%]  bg-[url(/background.webp)] bg-cover bg-center bg-no-repeat">

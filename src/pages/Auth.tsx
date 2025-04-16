@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../services/auth";
 import { AuthContext } from "../contexts/AuthContext";
 import AuthForm from "../components/AuthForm";
@@ -9,34 +8,22 @@ const Auth = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [message, setMessage] = useState("");
   const [messageStyle, setMessageStyle] = useState("");
-  const navigate = useNavigate();
   const auth = useContext(AuthContext);
 
   const handleAuth = async (username: string, password: string, role?: string, id?: string) => {
     try {
       if (isLoginForm) {
-        await loginUser(username, password);
-        auth?.setAuthenticated(true);
+        const userRole = await loginUser(username, password);
         setMessage("Login successful! Redirecting...");
         setMessageStyle("text-sm text-green-600 text-center");
-        await new Promise((resolve) => setTimeout(resolve, 750));
-        switch (auth?.userRole) {
-          case "patient":
-            navigate("/patient-profile");
-            break;
-          case "HR":
-            navigate("/employees-management");
-            break;
-          case "medical_personal":
-            navigate("/patients-management");
-            break;
-          default:
-            break;
-        }
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        auth?.setAuthenticated(true);
+        auth?.setUserRole(userRole);
       } else {
         await registerUser(username, password, role, id);
         setMessage("Registration successful! Please login.");
         setMessageStyle("text-sm text-green-600 text-center");
+        await new Promise((resolve) => setTimeout(resolve, 500));
         setIsLoginForm(true);
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
