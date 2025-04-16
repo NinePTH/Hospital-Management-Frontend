@@ -47,9 +47,9 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen md:h-dvh flex flex-col items-center justify-center bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
+    <div className="min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[7%] lg:pb-[2.75%]  bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
         <Navbar />
-        <div className="flex flex-col items-center justify-center border border-[#ACACAC] rounded-md w-2/3 md:w-2/5 lg:w-1/3 h-3/5 lg:h-5/6 lg:max-w-[350px] lg:max-h-[525px] p-10 md:p-10 lg:p-12 bg-white">
+        <div className="flex flex-col items-center justify-center shadow-soft rounded-md w-fit h-fit p-10 lg:p-12 bg-white">
           <h2 className="text-3xl mb-1 lg:text-4xl lg:mb-2 font-playfair">
             {isLoginForm ? "Login" : "Register"}
           </h2>
