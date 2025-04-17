@@ -7,8 +7,9 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
 
-  const handleLogout = () => {
+  const handleLogout = async() => {
     logoutUser();
+    await new Promise((resolve) => setTimeout(resolve, 250));
     auth?.setAuthenticated(false);
     navigate("/");
   };

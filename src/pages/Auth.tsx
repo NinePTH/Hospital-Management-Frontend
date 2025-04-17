@@ -3,6 +3,7 @@ import { loginUser, registerUser } from "../services/auth";
 import { AuthContext } from "../contexts/AuthContext";
 import AuthForm from "../components/AuthForm";
 import Navbar from "../components/Navbar";
+import { motion } from "motion/react";
 
 const Auth = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -36,7 +37,9 @@ const Auth = () => {
   return (
     <div className="min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[7%] lg:pb-[2.75%]  bg-[url(/background.webp)]  bg-cover bg-center bg-no-repeat">
         <Navbar />
-        <div className="flex flex-col items-center justify-center shadow-soft rounded-md w-fit h-fit p-10 lg:p-12 bg-white">
+        <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }} className="flex flex-col items-center justify-center shadow-soft rounded-md w-fit h-fit p-10 lg:p-12 bg-white">
           <h2 className="text-3xl mb-1 lg:text-4xl lg:mb-2 font-playfair">
             {isLoginForm ? "Login" : "Register"}
           </h2>
@@ -47,7 +50,7 @@ const Auth = () => {
             setIsLoginForm={setIsLoginForm}
           />
           {message && <p className={messageStyle}>{message}</p>}
-        </div>
+        </motion.div>
     </div>
   );
 };
