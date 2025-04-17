@@ -5,7 +5,7 @@ const ErrorState = ({ error }: { error: string }) => (
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="flex flex-col items-start justify-center shadow-soft rounded-md w-fit h-fit p-10 md:p-10 lg:p-12 bg-white"
+      className="flex flex-col items-start justify-center shadow-soft rounded-md w-fit h-fit py-10 px-8 md:p-10 lg:p-12 bg-white"
     >
       <p>Error: {error}</p>
     </motion.div>

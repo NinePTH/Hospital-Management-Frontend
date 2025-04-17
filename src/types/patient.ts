@@ -4,6 +4,7 @@ export interface PatientData {
     last_name: string;
     age: number;
     gender: string;
+    date_of_birth: string;
     blood_type: string;
     email: string;
     health_insurance: boolean;
