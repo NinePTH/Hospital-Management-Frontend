@@ -18,6 +18,7 @@ export const usePatientProfile = () => {
                 try {
                     const patientDataFromApi = await fetchUserPatient(data.patient_id);
                     setPatientData(patientDataFromApi);
+                    console.log("Patient Data:", patientData);
                 } catch (err: unknown) {
                     const errorMessage =
                         err instanceof Error ? err.message : "Failed to fetch patient data";

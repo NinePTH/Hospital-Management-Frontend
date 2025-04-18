@@ -10,11 +10,14 @@ const AppRoutes = () => {
   const auth = useContext(AuthContext);
 
   const HomeRoute = () => {
-    if (auth?.isAuthenticated) {
-      if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
-      else if (auth?.userRole === "HR") return <Navigate to="/employees-management" />;
-      else if (auth?.userRole === "medical-personnel") return <Navigate to="/patients-management" />;
+    if (!auth?.isAuthenticated) {
+      return <Auth />;
     }
+    if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
+    else if (auth?.userRole === "HR")
+      return <Navigate to="/employees-management" />;
+    else if (auth?.userRole === "medical-personnel")
+      return <Navigate to="/patients-management" />;
     return <Auth />;
   };
   return (
