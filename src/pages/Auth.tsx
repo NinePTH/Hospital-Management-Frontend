@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { loginUser, registerUser } from "../services/auth";
 import { AuthContext } from "../contexts/AuthContext";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "../components/auth/AuthForm";
 import Navbar from "../components/Navbar";
 import { motion } from "motion/react";
 
-const Auth = () => {
+const Auth:React.FC = (): JSX.Element => {
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [message, setMessage] = useState("");
   const [messageStyle, setMessageStyle] = useState("");
