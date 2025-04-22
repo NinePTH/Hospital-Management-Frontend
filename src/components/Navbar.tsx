@@ -19,8 +19,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white shadow-soft fixed top-0 left-0 w-full z-10">
-      <div className="container mx-auto flex justify-between items-center px-4 py-3">
+    <nav className="bg-white shadow-soft fixed top-0 left-0 w-full z-10 flex items-center justify-center">
+      <div className="w-full flex justify-between items-center px-6 md:px-20 lg:px-28 py-3">
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.webp" alt="logo" className="h-8" />
           <p className="text-base leading-5 font-semibold text-[#2C6975]">
@@ -36,9 +36,9 @@ const Navbar: React.FC = () => {
           <li><Link to="/" className="hover:text-[#2C6975]">Login</Link></li>
         </ul> */}
         {
-        auth?.isAuthenticated ? <button onClick={handleLogout} className="bg-[#2C6975] text-white py-1 px-4 lg:px-6 rounded-md active:scale-95 active:bg-[#25444e] transition duration-150">
+        auth?.isAuthenticated ? <button onClick={handleLogout} className="bg-white text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-4 lg:px-6 lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150">
           Logout
-        </button> : <button onClick={handleLogin} className="bg-[#2C6975] text-white py-1 px-4 lg:px-6 rounded-md active:scale-95 active:bg-[#25444e] transition duration-150">
+        </button> : <button onClick={handleLogin} className="bg-white text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-4 lg:px-6 lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150">
           Login
         </button>
         }
