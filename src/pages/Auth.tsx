@@ -4,12 +4,14 @@ import { AuthContext } from "../contexts/AuthContext";
 import AuthForm from "../components/auth/AuthForm";
 import Navbar from "../components/Navbar";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 
 const Auth:React.FC = (): JSX.Element => {
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [message, setMessage] = useState("");
   const [messageStyle, setMessageStyle] = useState("");
   const auth = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleAuth = async (username: string, password: string, role?: string, id?: string) => {
     try {
@@ -20,6 +22,7 @@ const Auth:React.FC = (): JSX.Element => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         auth?.setAuthenticated(true);
         auth?.setUserRole(userRole);
+        navigate("/")
       } else {
         await registerUser(username, password, role, id);
         setMessage("Registration successful! Please login.");
