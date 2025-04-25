@@ -5,7 +5,7 @@ const Hero: React.FC = (): JSX.Element => {
   return (
     <div className="min-h-dvh max-h-dvh flex flex-row items-center justify-center px-16 md:px-28 lg:pr-0 xl:pr-16 text-black">
       <div className="flex-[1_1_0] min-w-[37.5%]">
-        <h1 className="text-center text-3xl md:text-5xl lg:text-left lg:text-5xl xl:text-6xl font-inter font-medium mb-6">
+        <h1 className="text-center text-3xl md:text-5xl lg:text-left lg:text-5xl xl:text-6xl font-inter font-semibold mb-6">
           Excellence in <span className="text-[#2C6975]">Healthcare</span>,
           Compassion in Care
         </h1>
