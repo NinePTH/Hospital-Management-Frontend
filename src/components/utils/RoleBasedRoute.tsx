@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/UseAuth";
+import { useAuth } from "../../hooks/UseAuth";
 
 interface RoleBasedRouteProps {
   children: JSX.Element;

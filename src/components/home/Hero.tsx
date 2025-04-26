@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import AnimatedNumber from "../utils/animation/AnimatedNumber";
 
 const Hero: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Hero: React.FC = (): JSX.Element => {
         <div className="flex justify-center text-center lg:text-left lg:justify-start items-start gap-6 md:gap-20 lg:gap-14 text-sm whitespace-nowrap xl:gap-20 mt-8 lg:mt-14">
           <div>
             <p className="text-[#2C6975] text-lg md:text-2xl lg:text-3xl font-bold">
-              50+
+             <AnimatedNumber targetNumber={50} suffix="+" />
             </p>
             <p>
               Years of
@@ -40,7 +41,7 @@ const Hero: React.FC = (): JSX.Element => {
           </div>
           <div>
             <p className="text-[#2C6975] text-lg md:text-2xl lg:text-3xl font-bold">
-              20M+
+              <AnimatedNumber targetNumber={21} suffix="M" />
             </p>
             <p>
               Successful
@@ -50,7 +51,7 @@ const Hero: React.FC = (): JSX.Element => {
           </div>
           <div>
             <p className="text-[#2C6975] text-lg md:text-2xl lg:text-3xl font-bold">
-              100%
+              <AnimatedNumber targetNumber={100} suffix="%" />
             </p>
             <p>
               Daily Care,

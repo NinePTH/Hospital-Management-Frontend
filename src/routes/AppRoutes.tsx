@@ -3,7 +3,7 @@ import Auth from "../pages/Auth";
 import MyInfo from "../pages/MyInfo";
 import Home from "../pages/Home";
 // import ProtectedRoute from "../components/ProtectedRoute";
-import RoleBasedRoute from "../components/RoleBasedRoute";
+import RoleBasedRoute from "../components/utils/RoleBasedRoute";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
