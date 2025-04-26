@@ -64,7 +64,7 @@ const Hero: React.FC = (): JSX.Element => {
       <div className="hidden lg:block lg:pt-16">
         <div className="flex justify-center">
           <img
-            src="hero-image2.png"
+            src="hero-image.webp"
             alt="doctor"
             className="h-auto max-h-[70vh] object-contain"
           />
