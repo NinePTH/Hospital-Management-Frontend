@@ -32,7 +32,7 @@ const LastCTA = () => {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="hidden md:block md:text-base">
+            className="hidden md:block md:text-base w-2/3">
           Our system is designed to support seamless collaboration within the
           hospital. Patients can securely view their medical information and
           records, HR can manage employee data with ease, and medical personnel
