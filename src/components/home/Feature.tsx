@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 const Feature = () => {
   return (
-    <div className="pt-20 pb-36 px-28 min-h-fit w-full">
+    <div className="pt-20 pb-36 px-8 md:px-28 min-h-fit w-full">
       <div
         className="flex flex-col items-center justify-center gap-32 text-center min-h-dvh"
       >
@@ -14,7 +14,7 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="font-inter font-semibold text-3xl md:text-3xl"
+          className="font-inter font-semibold text-3xl md:text-3xl w-2/3 sm:w-full"
         >
           Your <span className="text-[#2C6975]">Personal</span> Health Portal
         </motion.h1>
@@ -27,7 +27,7 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="flex flex-col lg:flex-row items-center justify-evenly gap-16 lg:gap-0 w-full h-full">
+          className="flex flex-col lg:flex-row items-center justify-evenly gap-10 lg:gap-0 w-full h-full">
             <img src="device1.webp" alt="device" className="w-auto" />
             <div className="w-2/3 lg:w-1/3 text-center lg:text-left">
               <h1 className="text-[#2C6975] text-2xl font-semibold font-inter">
@@ -49,7 +49,7 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="flex flex-col-reverse lg:flex-row items-center justify-evenly gap-16 lg:gap-0 w-full h-full">
+          className="flex flex-col-reverse lg:flex-row items-center justify-evenly gap-10 lg:gap-0 w-full h-full">
             <div className="w-2/3 lg:w-1/3 text-center lg:text-left">
               <h1 className="text-[#2C6975] text-2xl font-semibold font-inter">
                 HR Departments
@@ -70,7 +70,7 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="flex flex-col lg:flex-row items-center justify-evenly gap-16 lg:gap-0 w-full h-full">
+          className="flex flex-col lg:flex-row items-center justify-evenly gap-10 lg:gap-0 w-full h-full">
             <img src="device3.webp" alt="device" className="w-auto" />
             <div className="w-2/3 lg:w-1/3 text-center lg:text-left">
               <h1 className="text-[#2C6975] text-2xl font-semibold font-inter">
