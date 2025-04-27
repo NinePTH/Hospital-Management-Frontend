@@ -1,18 +1,36 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Auth from "../pages/Auth";
-import Profile from "../pages/Profile";
-import ProtectedRoute from "../components/ProtectedRoute";
+import MyInfo from "../pages/MyInfo";
+import Home from "../pages/Home";
+// import ProtectedRoute from "../components/ProtectedRoute";
+import RoleBasedRoute from "../components/utils/RoleBasedRoute";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const AppRoutes = () => {
+  const auth = useContext(AuthContext);
+
+  const HomeRoute = () => {
+    if (!auth?.isAuthenticated) {
+      return <Home />;
+    }
+    if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
+    else if (auth?.userRole === "HR")
+      return <Navigate to="/employees-management" />;
+    else if (auth?.userRole === "medical-personnel")
+      return <Navigate to="/patients-management" />;
+    return <Home />;
+  };
   return (
     <Routes>
-      <Route path="/" element={<Auth />} />
+      <Route path="/" element={<HomeRoute />} />
+      <Route path="/login" element={<Auth />} />
       <Route
-        path="/profile"
+        path="/patient-profile"
         element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
+          <RoleBasedRoute allowedRoles={["patient"]}>
+            <MyInfo />
+          </RoleBasedRoute>
         }
       />
     </Routes>

@@ -10,12 +10,15 @@ export const api = axios.create({
 })
 
 // Set token in header
-export const setAuthToken = (token: string | null) => {
+export const setAuthToken = async(token: string | null) => {
     if (token) {
       localStorage.setItem("myApp_authToken", token);
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
       localStorage.removeItem("myApp_authToken");
+      localStorage.removeItem("myApp_userRole");
       delete api.defaults.headers.common["Authorization"];
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      console.log('Logout Successfully');
     }
   };

@@ -1,22 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React , { useContext }from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "../services/auth";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+
+  const handleLogin = async() => {
+    navigate("/login");
+  };
+
+  const handleLogout = async() => {
+    logoutUser();
+    await new Promise((resolve) => setTimeout(resolve, 250));
+    auth?.setAuthenticated(false);
+    navigate("/");
+  };
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      <div className="container mx-auto flex justify-center items-center p-4">
-        {/* Logo */}
-        {/* <Link to="/" className="text-2xl font-bold text-[#2C6975]">
-          Siam Hospital
-        </Link> */}
+    <nav className="bg-white shadow-soft fixed top-0 left-0 w-full z-10 flex items-center justify-center">
+      <div className="w-full flex justify-between items-center px-6 md:px-20 lg:px-28 py-3">
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/logo.webp" alt="logo" className="h-8" />
+          <p className="text-base leading-5 font-semibold text-[#2C6975]">
+            Siam
+            <br />
+            Hospital
+          </p>
+        </Link>
 
-        <ul className="flex space-x-6">
+        {/* <ul className="flex space-x-6">
           <li><Link to="/" className="hover:text-[#2C6975]">Home</Link></li>
           <li><Link to="/" className="hover:text-[#2C6975]">About</Link></li>
           <li><Link to="/" className="hover:text-[#2C6975]">Login</Link></li>
-        </ul>
-
+        </ul> */}
+        {
+        auth?.isAuthenticated ? <button onClick={handleLogout} className="bg-white text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-4 lg:px-6 lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150">
+          Logout
+        </button> : <button onClick={handleLogin} className="bg-white text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-4 lg:px-6 lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150">
+          Login
+        </button>
+        }
       </div>
     </nav>
   );
