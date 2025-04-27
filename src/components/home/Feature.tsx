@@ -18,7 +18,7 @@ const Feature = () => {
         >
           Your <span className="text-[#2C6975]">Personal</span> Health Portal
         </motion.h1>
-        <div className="flex flex-col items-center justify-center gap-16">
+        <div className="flex flex-col items-center justify-center gap-16 lg:gap-32">
           <motion.div
           initial="hidden"
           whileInView="visible"
@@ -27,9 +27,9 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="flex flex-row items-center justify-evenly w-full h-full">
+          className="flex flex-col lg:flex-row items-center justify-evenly gap-16 lg:gap-0 w-full h-full">
             <img src="device1.webp" alt="device" className="w-auto" />
-            <div className="w-1/3 text-left">
+            <div className="w-2/3 lg:w-1/3 text-center lg:text-left">
               <h1 className="text-[#2C6975] text-2xl font-semibold font-inter">
                 Patients
               </h1>
@@ -49,8 +49,8 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="flex flex-row items-center justify-evenly w-full h-full">
-            <div className="w-1/3 text-left">
+          className="flex flex-col-reverse lg:flex-row items-center justify-evenly gap-16 lg:gap-0 w-full h-full">
+            <div className="w-2/3 lg:w-1/3 text-center lg:text-left">
               <h1 className="text-[#2C6975] text-2xl font-semibold font-inter">
                 HR Departments
               </h1>
@@ -70,9 +70,9 @@ const Feature = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="flex flex-row items-center justify-evenly w-full h-full">
+          className="flex flex-col lg:flex-row items-center justify-evenly gap-16 lg:gap-0 w-full h-full">
             <img src="device3.webp" alt="device" className="w-auto" />
-            <div className="w-1/3 text-left">
+            <div className="w-2/3 lg:w-1/3 text-center lg:text-left">
               <h1 className="text-[#2C6975] text-2xl font-semibold font-inter">
                 Medical Personnel
               </h1>
