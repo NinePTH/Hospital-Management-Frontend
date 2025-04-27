@@ -9,7 +9,7 @@ const HospitalCharacter = () => {
         <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
         variants={{
           hidden: {},
           visible: {
