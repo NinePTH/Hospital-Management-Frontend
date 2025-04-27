@@ -1,4 +1,5 @@
 import Feature from "../components/home/Feature";
+import Footer from "../components/home/Footer";
 import Hero from "../components/home/Hero";
 import HospitalCharacter from "../components/home/HospitalCharacter";
 import LastCTA from "../components/home/LastCTA";
@@ -12,6 +13,7 @@ const Home: React.FC = (): JSX.Element => {
       <HospitalCharacter />
       <Feature />
       <LastCTA />
+      <Footer />
     </div>
   );
 };

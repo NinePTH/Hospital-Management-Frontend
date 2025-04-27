@@ -25,7 +25,7 @@ export default function AnimatedNumber({ targetNumber, suffix }: AnimatedNumberP
   }, [targetNumber, count]);
 
   return (
-    <motion.div style={{ fontSize: "2rem", fontWeight: "bold" }}>
+    <motion.div className="text-2xl md:text-[2rem] font-bold">
       {displayNumber}{suffix}
     </motion.div>
   );
