@@ -7,6 +7,8 @@ import Profile from "../components/myinfo/Profile";
 const MyInfo: React.FC = (): JSX.Element => {
   const { profile, patientData, isLoading, error } = usePatientProfile();
 
+  console.log("Patient Data okok:", patientData?.patient);
+
   const pageWrapper = "min-h-dvh flex flex-col items-center justify-center pt-[22.5%] pb-[7.5%] md:pt-[12.5%] md:pb-[5%] lg:pt-[9.5%] lg:pb-[4%]  bg-[url(/background.webp)] bg-cover bg-center bg-no-repeat"
 
   if (isLoading) {

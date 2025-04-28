@@ -1,6 +1,8 @@
 export interface PatientData {
     patient: PatientGeneralInfo
     medical_history: MedicalHistory[]
+    patient_chronic_disease: PatientChronicDiseases[]
+    patient_drug_allergy: PatientDrugAllergy[]
   }
 
   interface PatientGeneralInfo {
@@ -22,4 +24,12 @@ export interface PatientData {
     details: string;
     date: string;
     time: string;
+  }
+
+  interface PatientChronicDiseases {
+    disease_id: string[];
+  }
+
+  interface PatientDrugAllergy {
+    drug_id: string[];
   }
