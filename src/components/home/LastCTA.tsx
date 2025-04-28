@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const LastCTA = () => {
   const navigate = useNavigate();
   return (
-    <div className="py-10 px-28 min-h-fit w-full bg-[#2C6975]">
+    <div className="pt-10 pb-28 px-28 min-h-fit w-full">
       <motion.div
           initial="hidden"
           whileInView="visible"
@@ -17,7 +17,7 @@ const LastCTA = () => {
               },
             },
           }}
-        className="flex flex-col items-center justify-center gap-6 text-center text-white"
+        className="flex flex-col items-center justify-center gap-6 text-center text-black"
       >
         <motion.h1
             variants={{
@@ -25,7 +25,7 @@ const LastCTA = () => {
               visible: { opacity: 1, y: 0 },
             }}
             className="font-inter font-semibold text-2xl md:text-3xl">
-          Connect to Your Hospital's Trusted System
+          Connect to Your Hospital's <span className="text-[#2C6975]">Trusted System</span>
         </motion.h1>
         <motion.p
             variants={{
@@ -41,11 +41,11 @@ const LastCTA = () => {
         </motion.p>
         <motion.button
             variants={{
-              hidden: { opacity: 0, y: 20 },
+              hidden: { opacity: 0, y: 2 },
               visible: { opacity: 1, y: 0 },
             }}
           onClick={() => navigate("/login")}
-          className="bg-white text-[#2C6975] md:text-base lg:text-xl font-medium py-2 px-4 md:px-6 lg:px-8 xl:px-10 rounded-lg shadow-soft whitespace-nowrap border-[2px] border-white hover:bg-[#2C6975] hover:text-white hover:border-[2px] hover:border-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150"
+          className="bg-white text-[#2C6975] md:text-base lg:text-xl font-medium py-2 px-4 md:px-6 lg:px-8 xl:px-10 rounded-lg shadow-soft whitespace-nowrap border-[2px] border-[#2C6975] hover:bg-[#2C6975] hover:text-white hover:border-[2px] hover:border-[#2C6975] active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150"
         >
           Access the System
         </motion.button>
