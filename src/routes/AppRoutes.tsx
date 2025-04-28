@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import RoleBasedRoute from "../components/utils/RoleBasedRoute";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import PatientManagement from "../pages/PatientManagement";
 
 const AppRoutes = () => {
   const auth = useContext(AuthContext);
@@ -17,7 +18,7 @@ const AppRoutes = () => {
     if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
     else if (auth?.userRole === "HR")
       return <Navigate to="/employees-management" />;
-    else if (auth?.userRole === "medical-personnel")
+    else if (auth?.userRole === "medical_personnel")
       return <Navigate to="/patients-management" />;
     return <Home />;
   };
@@ -30,6 +31,14 @@ const AppRoutes = () => {
         element={
           <RoleBasedRoute allowedRoles={["patient"]}>
             <MyInfo />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/patients-management"
+        element={
+          <RoleBasedRoute allowedRoles={["medical_personnel"]}>
+            <PatientManagement />
           </RoleBasedRoute>
         }
       />
