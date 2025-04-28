@@ -1,10 +1,11 @@
 import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 const PatientManagement: React.FC = (): JSX.Element => {
   return (
     <>
       <Navbar />
-      <div>Patient Management</div>
+      <Sidebar />
     </>
   );
 };
