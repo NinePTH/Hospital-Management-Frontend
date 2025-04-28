@@ -42,6 +42,14 @@ const AppRoutes = () => {
           </RoleBasedRoute>
         }
       />
+      <Route
+        path="/patients-management/add-patient"
+        element={
+          <RoleBasedRoute allowedRoles={["medical_personnel"]}>
+            <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
     </Routes>
   );
 };
