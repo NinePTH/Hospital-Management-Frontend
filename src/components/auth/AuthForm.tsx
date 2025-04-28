@@ -55,7 +55,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
             >
               <option value="patient" className="py-2">Patient</option>
               <option value="HR" className="py-2">HR</option>
-              <option value="medical_personal" className="py-2">Medical Personnel</option>
+              <option value="medical_personnel" className="py-2">Medical Personnel</option>
             </select>
             
             <label className="text-sm lg:text-md">ID</label>

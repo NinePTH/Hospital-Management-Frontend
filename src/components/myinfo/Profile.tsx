@@ -19,8 +19,8 @@ const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
     { label: "Blood Type", value: patientData?.patient.blood_type },
     // { label: "Email", value: patientData?.patient.email },
     { label: "Health Insurance", value: patientData?.patient.health_insurance ? "Yes" : "No" },
-    { label: "Address", value: patientData?.patient.address },
-    { label: "Phone number", value: patientData?.patient.phone_number },
+    // { label: "Address", value: patientData?.patient.address },
+    // { label: "Phone number", value: patientData?.patient.phone_number },
     { label: "ID card number", value: patientData?.patient.id_card_number },
     { label: "Ongoing treatment", value: patientData?.patient.ongoing_treatment },
   ];
