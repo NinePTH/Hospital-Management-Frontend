@@ -11,7 +11,9 @@ const Home: React.FC = (): JSX.Element => {
       <Navbar />
       <Hero />
       <HospitalCharacter />
-      <Feature />
+      <div id="feature-section">
+        <Feature />
+      </div>
       <LastCTA />
       <Footer />
     </div>

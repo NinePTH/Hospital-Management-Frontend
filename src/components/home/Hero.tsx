@@ -22,7 +22,10 @@ const Hero: React.FC = (): JSX.Element => {
             <span className="">Our System</span>
           </button>
           <button
-            onClick={() => navigate("/login")}
+            onClick={() => {
+              const featureSection = document.getElementById("feature-section");
+              featureSection?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="bg-white text-[#2C6975] md:text-base lg:text-xl font-medium py-2 px-4 md:px-6 lg:px-8 xl:px-10 rounded-lg shadow-soft whitespace-nowrap hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150"
           >
             System Info
@@ -31,7 +34,7 @@ const Hero: React.FC = (): JSX.Element => {
         <div className="flex justify-center text-center lg:text-left lg:justify-start items-start gap-6 md:gap-20 lg:gap-14 text-sm whitespace-nowrap xl:gap-20 mt-8 lg:mt-14">
           <div>
             <p className="text-[#2C6975] text-lg md:text-2xl lg:text-3xl font-bold">
-             <AnimatedNumber targetNumber={50} suffix="+" />
+              <AnimatedNumber targetNumber={50} suffix="+" />
             </p>
             <p>
               Years of
