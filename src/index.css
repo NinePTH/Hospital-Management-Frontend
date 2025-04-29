@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    @apply font-playfair;
-    @apply font-quicksand;
-  }
-  
+  @apply font-playfair;
+  @apply font-quicksand;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
