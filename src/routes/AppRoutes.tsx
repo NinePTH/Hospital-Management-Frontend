@@ -11,21 +11,22 @@ import PatientManagement from "../pages/PatientManagement";
 const AppRoutes = () => {
   const auth = useContext(AuthContext);
 
-  const HomeRoute = () => {
+  const Service = () => {
     if (!auth?.isAuthenticated) {
-      return <Home />;
+      return <Auth />;
     }
     if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
     else if (auth?.userRole === "HR")
       return <Navigate to="/employees-management" />;
     else if (auth?.userRole === "medical_personnel")
       return <Navigate to="/patients-management" />;
-    return <Home />;
+    return <Auth />;
   };
   return (
     <Routes>
-      <Route path="/" element={<HomeRoute />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Auth />} />
+      <Route path="/system" element={<Service />} />
       <Route
         path="/patient-profile"
         element={

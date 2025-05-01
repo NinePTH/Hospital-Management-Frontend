@@ -25,7 +25,7 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
   const links = sidebarLinks[basePath] || [];
 
   return (
-    <nav className="sticky top-0 bg-white shadow-soft min-h-dvh h-full lg:w-1/3 flex flex-col items-start justify-start gap-8 pt-28">
+    <nav className="hidden sticky top-0 bg-white shadow-soft min-h-dvh h-full lg:w-1/3 lg:flex flex-col items-start justify-start gap-8 pt-28">
       <p className="text-base leading-5 font-semibold text-[#2C6975] px-10 w-full capitalize">
         {basePath.replace("-", " ")} System
       </p>
