@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import AddPatient from "../components/patientManagement/AddPatient";
 import Sidebar from "../components/Sidebar";
+import EditPatient from "../components/patientManagement/EditPatient";
 
 const PatientManagement: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const PatientManagement: React.FC = (): JSX.Element => {
     {
       "patients-management": [
         { path: "add-patient", component: <AddPatient /> },
-        { path: "edit-patient", component: <AddPatient /> },
+        { path: "edit-patient", component: <EditPatient /> },
         { path: "add-patient-apppointment", component: <AddPatient /> },
         { path: "add-patient-medical-history", component: <AddPatient /> },
         { path: "search-patient", component: <AddPatient /> },

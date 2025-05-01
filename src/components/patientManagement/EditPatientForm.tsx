@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddPatientForm = () => {
+const EditPatientForm = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [age, setAge] = useState(1);
@@ -79,7 +79,7 @@ const AddPatientForm = () => {
       };
 
   return (
-    <form className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-8 gap-4 whitespace-nowrap">
+    <form className="w-full grid grid-cols-4 grid-rows-9 gap-4">
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">First Name</label>
         <input
@@ -162,13 +162,13 @@ const AddPatientForm = () => {
             <option value="no" className="py-2">No</option>
         </select>
       </div>
-      <div className="flex flex-col gap-2 col-span-2 lg:col-span-4 row-span-2">
+      <div className="flex flex-col gap-2 col-span-4 row-span-2">
         <label className="text-sm lg:text-md">Address</label>
-        <textarea
-          // type="text"
+        <input
+          type="text"
             value={address}
           onChange={(e) => setAddress(e.target.value)}
-          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full resize-none"
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
@@ -275,4 +275,4 @@ const AddPatientForm = () => {
   );
 };
 
-export default AddPatientForm;
+export default EditPatientForm;
