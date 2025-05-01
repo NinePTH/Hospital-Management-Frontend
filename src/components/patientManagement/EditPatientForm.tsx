@@ -79,7 +79,7 @@ const EditPatientForm = () => {
       };
 
   return (
-    <form className="w-full grid grid-cols-4 grid-rows-9 gap-4">
+    <form className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-8 gap-4 whitespace-nowrap">
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">First Name</label>
         <input
@@ -162,13 +162,13 @@ const EditPatientForm = () => {
             <option value="no" className="py-2">No</option>
         </select>
       </div>
-      <div className="flex flex-col gap-2 col-span-4 row-span-2">
+      <div className="flex flex-col gap-2 col-span-2 lg:col-span-4 row-span-2">
         <label className="text-sm lg:text-md">Address</label>
-        <input
-          type="text"
+        <textarea
+          // type="text"
             value={address}
           onChange={(e) => setAddress(e.target.value)}
-          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full resize-none"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
@@ -255,7 +255,7 @@ const EditPatientForm = () => {
             />
         </div>
       ))}
-      <div className="col-span-full flex gap-4 w-1/2 mt-4">
+      <div className="col-span-full flex flex-wrap justify-center sm:justify-normal gap-4 mt-4">
       <button
         onClick={handleClear}
         type="button"

@@ -5,8 +5,8 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
     "patients-management": [
       { path: "add-patient", icon: "/sidebar/addPatientIcon.webp", alt: "Add Patient", label: "Add Patient" },
       { path: "edit-patient", icon: "/sidebar/editPatientIcon.webp", alt: "Edit Patient", label: "Edit Patient" },
-      { path: "add-patient-apppointment", icon: "/sidebar/patientAppointmentIcon.webp", alt: "Patient Appointment", label: "Patient Appointment" },
-      { path: "add-patient-medical-history", icon: "/sidebar/patientHistoryIcon.webp", alt: "Patient History", label: "Add History" },
+      { path: "add-patient-appointment", icon: "/sidebar/patientAppointmentIcon.webp", alt: "Patient Appointment", label: "Patient Appointment" },
+      { path: "add-patient-medical-history", icon: "/sidebar/patientHistoryIcon.webp", alt: "Patient History", label: "Patient History" },
       { path: "search-patient", icon: "/sidebar/patientInformationIcon.webp", alt: "Patient Information", label: "Patient Information" },
     ],
     "employee-management": [
@@ -49,7 +49,7 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
                 alt={link.alt}
                 className="h-5"
               />
-              <div className="text-xl">
+              <div className="text-base xl:text-xl">
                 {link.label}
               </div>
             </Link>

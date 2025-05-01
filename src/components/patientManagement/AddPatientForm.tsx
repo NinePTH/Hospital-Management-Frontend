@@ -255,7 +255,7 @@ const AddPatientForm = () => {
             />
         </div>
       ))}
-      <div className="col-span-full flex gap-4 w-1/2 mt-4">
+      <div className="col-span-full flex flex-wrap justify-center sm:justify-normal gap-4 mt-4">
       <button
         onClick={handleClear}
         type="button"
