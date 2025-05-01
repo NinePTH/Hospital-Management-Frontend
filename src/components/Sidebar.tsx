@@ -9,10 +9,10 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
       { path: "add-patient-medical-history", icon: "/sidebar/patientHistoryIcon.webp", alt: "Patient History", label: "Patient History" },
       { path: "search-patient", icon: "/sidebar/patientInformationIcon.webp", alt: "Patient Information", label: "Patient Information" },
     ],
-    "employee-management": [
-      { path: "add-employee", icon: "/sidebar/addEmployeeIcon.webp", alt: "Add Employee", label: "Add Employee" },
-      { path: "edit-employee", icon: "/sidebar/editEmployeeIcon.webp", alt: "Edit Employee", label: "Edit Employee" },
-      { path: "search-employee", icon: "/sidebar/searchEmployeeIcon.webp", alt: "Employee Information", label: "Employee Information" },
+    "employees-management": [
+      { path: "add-employee", icon: "/sidebar/addPatientIcon.webp", alt: "Add Employee", label: "Add Employee" },
+      { path: "edit-employee", icon: "/sidebar/editPatientIcon.webp", alt: "Edit Employee", label: "Edit Employee" },
+      { path: "search-employee", icon: "/sidebar/patientInformationIcon.webp", alt: "Employee Information", label: "Employee Information" },
     ],
   };
   

@@ -127,7 +127,7 @@ const Navbar: React.FC = () => {
                     </Link>
                   );
                 })
-              ) : basePath === "employee-management" ? (
+              ) : basePath === "employees-management" ? (
                 hrSystemLinks.map((link) => {
                   return (
                     <Link

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const AddPatientForm = () => {
+    const [patientID, setPatientID] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [age, setAge] = useState(1);
@@ -59,6 +60,7 @@ const AddPatientForm = () => {
 
     const handleClear = (e: React.FormEvent) => {
         e.preventDefault();
+        setPatientID("");
         setFirstName("");
         setLastName("");
         setAge(1);
@@ -80,6 +82,15 @@ const AddPatientForm = () => {
 
   return (
     <form className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-8 gap-4 whitespace-nowrap">
+      <div className="flex flex-col gap-2 col-span-2">
+        <label className="text-sm lg:text-md">Patient ID</label>
+        <input
+          type="text"
+            value={patientID}
+          onChange={(e) => setPatientID(e.target.value)}
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
+        />
+      </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">First Name</label>
         <input
@@ -145,7 +156,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Email</label>
         <input
-          type="text"
+          type="email"
             value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"

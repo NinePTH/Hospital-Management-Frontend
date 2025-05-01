@@ -7,6 +7,7 @@ import RoleBasedRoute from "../components/utils/RoleBasedRoute";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import PatientManagement from "../pages/PatientManagement";
+import EmployeeManagement from "../pages/EmployeeManagement";
 
 const AppRoutes = () => {
   const auth = useContext(AuthContext);
@@ -35,6 +36,7 @@ const AppRoutes = () => {
           </RoleBasedRoute>
         }
       />
+
       <Route
         path="/patients-management"
         element={
@@ -80,6 +82,39 @@ const AppRoutes = () => {
         element={
           <RoleBasedRoute allowedRoles={["medical_personnel"]}>
             <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
+
+      <Route
+        path="/employees-management"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/employees-management/add-employee"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/employees-management/edit-employee"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/employees-management/search-employee"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
           </RoleBasedRoute>
         }
       />
