@@ -1,23 +1,23 @@
 import { useState } from "react";
 
 const AddPatientForm = () => {
-    const [patientID, setPatientID] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [age, setAge] = useState(1);
-    const [dob, setDob] = useState("");
-    const [gender, setGender] = useState("male");
-    const [bloodType, setBloodType] = useState("A");
-    const [email, setEmail] = useState("");
-    const [healthInsurance, setHealthInsurance] = useState(false);
-    const [address, setAddress] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [idCardNumber, setIdCardNumber] = useState("");
-    const [ongoingTreatment, setOngoingTreatment] = useState("");
-    const [unhealthyHabits, setUnhealthyHabits] = useState("");
-    const [numDiseases, setNumDiseases] = useState(0);
+    const [patientID, setPatientID] = useState<string>("");
+    const [firstName, setFirstName] = useState<string>("");
+    const [lastName, setLastName] = useState<string>("");
+    const [age, setAge] = useState<number | "">("");
+    const [dob, setDob] = useState<string>("");
+    const [gender, setGender] = useState<string>("");
+    const [bloodType, setBloodType] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [healthInsurance, setHealthInsurance] = useState<string>("");
+    const [address, setAddress] = useState<string>("");
+    const [phoneNumber, setPhoneNumber] = useState<string>("");
+    const [idCardNumber, setIdCardNumber] = useState<string>("");
+    const [ongoingTreatment, setOngoingTreatment] = useState<string>("");
+    const [unhealthyHabits, setUnhealthyHabits] = useState<string>("");
+    const [numDiseases, setNumDiseases] = useState<number>(0);
     const [diseaseIds, setDiseaseIds] = useState<string[]>([]);
-    const [numDrugAllergies, setNumDrugAllergies] = useState(0);
+    const [numDrugAllergies, setNumDrugAllergies] = useState<number>(0);
     const [drugIds, setDrugIds] = useState<string[]>([]);
 
     const handleNumDiseaseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,12 +63,12 @@ const AddPatientForm = () => {
         setPatientID("");
         setFirstName("");
         setLastName("");
-        setAge(1);
+        setAge("");
         setDob("");
         setGender("male");
         setBloodType("A");
         setEmail("");
-        setHealthInsurance(false);
+        setHealthInsurance("");
         setAddress("");
         setPhoneNumber("");
         setIdCardNumber("");
@@ -116,7 +116,7 @@ const AddPatientForm = () => {
           min={1}
           max={120}
             value={age}
-          onChange={(e) => setAge(parseInt(e.target.value))}
+          onChange={(e) => setAge(e.target.value === "" ? "" : parseInt(e.target.value))}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -136,6 +136,9 @@ const AddPatientForm = () => {
             onChange={(e) => setGender(e.target.value)}
             className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
+            <option value="" disabled hidden>
+            Select gender
+            </option>
             <option value="male" className="py-2">Male</option>
             <option value="female" className="py-2">Female</option>
         </select>
@@ -147,6 +150,9 @@ const AddPatientForm = () => {
             onChange={(e) => setBloodType(e.target.value)}
             className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
+            <option value="" disabled hidden>
+            Select blood type
+            </option>
             <option value="A" className="py-2">A</option>
             <option value="B" className="py-2">B</option>
             <option value="AB" className="py-2">AB</option>
@@ -165,10 +171,13 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Health Insurance</label>
         <select
-            value={healthInsurance ? 'yes' : 'no'}
-            onChange={(e) => {setHealthInsurance(e.target.value === 'yes')}}
+            value={healthInsurance}
+            onChange={(e) => {setHealthInsurance(e.target.value)}}
             className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
+            <option value="" disabled hidden>
+            Select insurance status
+            </option>
             <option value="yes" className="py-2">Yes</option>
             <option value="no" className="py-2">No</option>
         </select>

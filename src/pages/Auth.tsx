@@ -22,7 +22,7 @@ const Auth:React.FC = (): JSX.Element => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         auth?.setAuthenticated(true);
         auth?.setUserRole(userRole);
-        navigate("/")
+        navigate("/system")
       } else {
         await registerUser(username, password, role, id);
         setMessage("Registration successful! Please login.");
