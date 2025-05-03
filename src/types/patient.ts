@@ -14,7 +14,7 @@ export interface PatientData {
     date_of_birth: string;
     blood_type: string;
     email: string;
-    health_insurance: boolean;
+    health_insurance: string;
     address: string;
     phone_number: string;
     id_card_number: string;

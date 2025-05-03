@@ -17,9 +17,9 @@ const medicalPersonnelSystemLinks = [
 ];
 
 const hrSystemLinks = [
-  { path: "/employee-management/add-employee", label: "Add Employee" },
-  { path: "/employee-management/edit-patient", label: "Edit Employee" },
-  { path: "/employee-management/search-employee", label: "Employee Information" },
+  { path: "/employees-management/add-employee", label: "Add Employee" },
+  { path: "/employees-management/edit-employee", label: "Edit Employee" },
+  { path: "/employees-management/search-employee", label: "Employee Information" },
 ];
 
 const Navbar: React.FC = () => {
