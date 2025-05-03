@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import FormLayout from "../components/FormLayout";
+import FormLayout from "../components/utils/FormLayout";
 import AddEmployeeForm from "../components/employeeManagement/AddEmployeeForm";
 import EditEmployeeForm from "../components/employeeManagement/EditEmployeeForm";
 import SearchEmployee from "../components/employeeManagement/SearchEmployee";

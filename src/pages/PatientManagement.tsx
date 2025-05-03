@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import AddPatientForm from "../components/patientManagement/AddPatientForm";
-import FormLayout from "../components/FormLayout";
+import FormLayout from "../components/utils/FormLayout";
 import EditPatientForm from "../components/patientManagement/EditPatientForm";
 import PatientAppointmentForm from "../components/patientManagement/PatientAppointmentForm";
 import PatientHistoryForm from "../components/patientManagement/PatientHistoryForm";
