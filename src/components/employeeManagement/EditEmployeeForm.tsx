@@ -62,8 +62,12 @@ const AddEmployeeForm = () => {
             onChange={(e) => setPosition(e.target.value)}
             className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
-            <option value="กูไม่รู้ 1" className="py-2">กูไม่รู้ 1</option>
-            <option value="กูไม่รู้ 2" className="py-2">กูไม่รู้ 2</option>
+            <option value="" disabled hidden>
+            Select Position
+            </option>
+            <option value="doctor" className="py-2">Doctor</option>
+            <option value="nurse" className="py-2">Nurse</option>
+            <option value="HR" className="py-2">HR</option>
         </select>
       </div>
       <div className="flex flex-col gap-2 col-span-2">

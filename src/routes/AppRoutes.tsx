@@ -18,7 +18,7 @@ const AppRoutes = () => {
     }
     if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
     else if (auth?.userRole === "HR")
-      return <Navigate to="/employees-management" />;
+      return <Navigate to="/employees-management/add-employee" />;
     else if (auth?.userRole === "medical_personnel")
       return <Navigate to="/patients-management/add-patient" />;
     return <Auth />;
