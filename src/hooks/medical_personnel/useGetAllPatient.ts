@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { PatientData } from "../types";
-import { fetchAllPatient } from "../services/medical_personnel";
+import { PatientData } from "../../types";
+import { fetchAllPatient } from "../../services/medical_personnel";
 
 export const useGetAllPatient = () => {
     const [patientsData, setPatientData] = useState<PatientData[] | null>(null);
