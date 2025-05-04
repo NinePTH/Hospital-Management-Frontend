@@ -21,8 +21,7 @@ export const useAddPatientHistory = () => {
             const result = await addPatientHistory(patientHistory);
             setResponse(result);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : "Failed to add patient history";
-            console.error(errorMessage);
+            console.error(err);
             setError("Could not perform add patient history");
         } finally {
             setIsLoading(false);

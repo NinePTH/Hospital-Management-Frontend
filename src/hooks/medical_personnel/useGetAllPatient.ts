@@ -15,9 +15,7 @@ export const useGetAllPatient = () => {
                 setPatientData(patientDataFromApi);
                 // console.log("Patient Data:", patientData);
             } catch (err: unknown) {
-                const errorMessage =
-                    err instanceof Error ? err.message : "Failed to fetch patient data";
-                console.error(errorMessage);
+                console.error(err);
                 setError("Could not load patient information");
             } finally {
                 setIsLoading(false);

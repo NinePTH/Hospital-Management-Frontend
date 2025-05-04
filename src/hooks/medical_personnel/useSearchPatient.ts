@@ -21,8 +21,7 @@ export const useSearchPatient = () => {
             const result = await searchPatient(searchTerm);
             setResults(result);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : "Failed to fetch patient data";
-            console.error(errorMessage);
+            console.error(err);
             setError("Could not perform search");
         } finally {
             setIsLoading(false);

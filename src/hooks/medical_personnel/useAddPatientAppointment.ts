@@ -21,8 +21,7 @@ export const useAddPatientAppointment = () => {
             const result = await addPatientAppointment(patientAppointment);
             setResponse(result);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : "Failed to add patient appointment";
-            console.error(errorMessage);
+            console.error(err);
             setError("Could not perform add patient appointment");
         } finally {
             setIsLoading(false);

@@ -1,84 +1,168 @@
 import { useState } from "react";
+import { useAddNewPatient } from "../../hooks/medical_personnel/useAddPatient";
+
+interface PatientData {
+  patient: {
+    patient_id: string;
+    first_name: string;
+    last_name: string;
+    age: number;
+    date_of_birth: string;
+    gender: string;
+    blood_type: string;
+    email: string;
+    health_insurance: string;
+    address: string;
+    phone_number: string;
+    id_card_number: string;
+    ongoing_treatment: string;
+    unhealthy_habits: string;
+  };
+  numDiseases: number;
+  diseaseIds: string[];
+  numDrugAllergies: number;
+  drugIds: string[];
+}
 
 const AddPatientForm = () => {
-    const [patientID, setPatientID] = useState<string>("");
-    const [firstName, setFirstName] = useState<string>("");
-    const [lastName, setLastName] = useState<string>("");
-    const [age, setAge] = useState<number>(0);
-    const [dob, setDob] = useState<string>("");
-    const [gender, setGender] = useState<string>("");
-    const [bloodType, setBloodType] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [healthInsurance, setHealthInsurance] = useState<string>("");
-    const [address, setAddress] = useState<string>("");
-    const [phoneNumber, setPhoneNumber] = useState<string>("");
-    const [idCardNumber, setIdCardNumber] = useState<string>("");
-    const [ongoingTreatment, setOngoingTreatment] = useState<string>("");
-    const [unhealthyHabits, setUnhealthyHabits] = useState<string>("");
-    const [numDiseases, setNumDiseases] = useState<number>(0);
-    const [diseaseIds, setDiseaseIds] = useState<string[]>([]);
-    const [numDrugAllergies, setNumDrugAllergies] = useState<number>(0);
-    const [drugIds, setDrugIds] = useState<string[]>([]);
+  const { response, isLoading, handleAddNewPatient } = useAddNewPatient();
+  console.log("Response:", response);
+  const [formData, setFormData] = useState<PatientData>({
+    patient: {
+      patient_id: "",
+      first_name: "",
+      last_name: "",
+      age: 0,
+      date_of_birth: "",
+      gender: "",
+      blood_type: "",
+      email: "",
+      health_insurance: "",
+      address: "",
+      phone_number: "",
+      id_card_number: "",
+      ongoing_treatment: "",
+      unhealthy_habits: "",
+    },
+    numDiseases: 0,
+    diseaseIds: [],
+    numDrugAllergies: 0,
+    drugIds: [],
+  });
 
-    const handleNumDiseaseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNumDiseaseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const count = parseInt(e.target.value) || 0;
-    setNumDiseases(count);
-    // Adjust the size of the diseaseIds array
-    setDiseaseIds((prev) => {
-      const newIds = [...prev];
-      newIds.length = count;
-      return newIds.fill("", newIds.length, count); // fill new empty slots
-    });
-};
 
-    const handleNumDrugChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentIds = formData.diseaseIds.slice(0, count); // keep existing ones
+    const filledIds = [...currentIds];
+
+    while (filledIds.length < count) {
+      filledIds.push("");
+    }
+
+    setFormData({
+      ...formData,
+      numDiseases: count,
+      diseaseIds: filledIds,
+    });
+  };
+
+  const handleNumDrugChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const count = parseInt(e.target.value) || 0;
-    setNumDrugAllergies(count);
-    // Adjust the size of the diseaseIds array
-    setDrugIds((prev) => {
-      const newIds = [...prev];
-      newIds.length = count;
-      return newIds.fill("", newIds.length, count); // fill new empty slots
-    });
-};
 
-    const handleDiseaseIdChange = (index: number, value: string) => {
-    setDiseaseIds((prev) => {
-      const newIds = [...prev];
-      newIds[index] = value;
-      return newIds;
+    const currentIds = formData.drugIds.slice(0, count); // keep existing ones
+    const filledIds = [...currentIds];
+
+    while (filledIds.length < count) {
+      filledIds.push("");
+    }
+
+    setFormData({
+      ...formData,
+      numDrugAllergies: count,
+      drugIds: filledIds,
     });
+  };
+
+  const handleDiseaseIdChange = (index: number, value: string) => {
+    const newDiseaseIds = [...formData.diseaseIds];
+    newDiseaseIds[index] = value;
+
+    setFormData({
+      ...formData,
+      diseaseIds: newDiseaseIds,
+    });
+  };
+
+  const handleDrugChange = (index: number, value: string) => {
+    const newDrugIds = [...formData.drugIds];
+    newDrugIds[index] = value;
+
+    setFormData({
+      ...formData,
+      drugIds: newDrugIds,
+    });
+  };
+
+  const handleClear = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormData({
+      patient: {
+        patient_id: "",
+        first_name: "",
+        last_name: "",
+        age: 0,
+        date_of_birth: "",
+        gender: "",
+        blood_type: "",
+        email: "",
+        health_insurance: "",
+        address: "",
+        phone_number: "",
+        id_card_number: "",
+        ongoing_treatment: "",
+        unhealthy_habits: "",
+      },
+      numDiseases: 0,
+      diseaseIds: [],
+      numDrugAllergies: 0,
+      drugIds: [],
+    });
+  };
+
+  const transformForApi = (data: PatientData) => {
+    return {
+      patient: data.patient,
+      patient_chronic_disease: data.diseaseIds.map((id) => ({
+        disease_id: id,
+      })),
+      patient_drug_allergy: data.drugIds.map((id) => ({ drug_id: id })),
     };
-
-    const handleDrugChange = (index: number, value: string) => {
-        setDrugIds((prev) => {
-      const newIds = [...prev];
-      newIds[index] = value;
-      return newIds;
-    });
-    };
-
-    const handleClear = (e: React.FormEvent) => {
-        e.preventDefault();
-        setPatientID("");
-        setFirstName("");
-        setLastName("");
-        setAge(0);
-        setDob("");
-        setGender("male");
-        setBloodType("A");
-        setEmail("");
-        setHealthInsurance("");
-        setAddress("");
-        setPhoneNumber("");
-        setIdCardNumber("");
-        setOngoingTreatment("");
-        setUnhealthyHabits("");
-        setNumDiseases(0);
-        setDiseaseIds([]);
-        setNumDrugAllergies(0);
-        setDrugIds([]);
-      };
+  };
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleAddNewPatient(transformForApi(formData));
+    // setFormData({
+    //   patient_id: "",
+    //   first_name: "",
+    //   last_name: "",
+    //   age: 0,
+    //   date_of_birth: "",
+    //   gender: "",
+    //   blood_type: "",
+    //   email: "",
+    //   health_insurance: "",
+    //   address: "",
+    //   phone_number: "",
+    //   id_card_number: "",
+    //   ongoing_treatment: "",
+    //   unhealthy_habits: "",
+    //   numDiseases: 0,
+    //   diseaseIds: [],
+    //   numDrugAllergies: 0,
+    //   drugIds: [],
+    // });
+  };
 
   return (
     <form className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-8 gap-4 whitespace-nowrap">
@@ -86,8 +170,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Patient ID</label>
         <input
           type="text"
-            value={patientID}
-          onChange={(e) => setPatientID(e.target.value)}
+          value={formData.patient.patient_id}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, patient_id: e.target.value } })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -95,8 +181,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">First Name</label>
         <input
           type="text"
-            value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          value={formData.patient.first_name}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, first_name: e.target.value } })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -104,8 +192,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Last Name</label>
         <input
           type="text"
-            value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          value={formData.patient.last_name}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, last_name: e.target.value} })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -115,8 +205,10 @@ const AddPatientForm = () => {
           type="number"
           min={1}
           max={120}
-          value={age == 0 ? "" : age}
-          onChange={(e) => setAge(parseInt(e.target.value))}
+          value={formData.patient.age == 0 ? "" : formData.patient.age}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, age: parseInt(e.target.value) }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -124,70 +216,94 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Date of Birth</label>
         <input
           type="date"
-            value={dob}
-          onChange={(e) => setDob(e.target.value)}
+          value={formData.patient.date_of_birth}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, date_of_birth: e.target.value }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Gender</label>
         <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
+          value={formData.patient.gender}
+          onChange={(e) => setFormData({ ...formData, patient: { ...formData.patient, gender: e.target.value }})}
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
-            <option value="" disabled hidden>
+          <option value="" disabled hidden>
             Select gender
-            </option>
-            <option value="male" className="py-2">Male</option>
-            <option value="female" className="py-2">Female</option>
+          </option>
+          <option value="male" className="py-2">
+            Male
+          </option>
+          <option value="female" className="py-2">
+            Female
+          </option>
         </select>
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Blood type</label>
         <select
-            value={bloodType}
-            onChange={(e) => setBloodType(e.target.value)}
-            className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
+          value={formData.patient.blood_type}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, blood_type: e.target.value }})
+          }
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
-            <option value="" disabled hidden>
+          <option value="" disabled hidden>
             Select blood type
-            </option>
-            <option value="A" className="py-2">A</option>
-            <option value="B" className="py-2">B</option>
-            <option value="AB" className="py-2">AB</option>
-            <option value="O" className="py-2">O</option>
+          </option>
+          <option value="A" className="py-2">
+            A
+          </option>
+          <option value="B" className="py-2">
+            B
+          </option>
+          <option value="AB" className="py-2">
+            AB
+          </option>
+          <option value="O" className="py-2">
+            O
+          </option>
         </select>
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Email</label>
         <input
           type="email"
-            value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={formData.patient.email}
+          onChange={(e) => setFormData({ ...formData, patient: { ...formData.patient, email: e.target.value }})}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Health Insurance</label>
         <select
-            value={healthInsurance}
-            onChange={(e) => {setHealthInsurance(e.target.value)}}
-            className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
+          value={formData.patient.health_insurance}
+          onChange={(e) => {
+            setFormData({ ...formData, patient: { ...formData.patient, health_insurance: e.target.value }});
+          }}
+          className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
-            <option value="" disabled hidden>
+          <option value="" disabled hidden>
             Select insurance status
-            </option>
-            <option value="yes" className="py-2">Yes</option>
-            <option value="no" className="py-2">No</option>
+          </option>
+          <option value="yes" className="py-2">
+            Yes
+          </option>
+          <option value="no" className="py-2">
+            No
+          </option>
         </select>
       </div>
       <div className="flex flex-col gap-2 col-span-2 lg:col-span-4 row-span-2">
         <label className="text-sm lg:text-md">Address</label>
         <textarea
           // type="text"
-            value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          value={formData.patient.address}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, address: e.target.value }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full resize-none"
         />
       </div>
@@ -195,8 +311,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Phone Number</label>
         <input
           type="text"
-            value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={formData.patient.phone_number}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, phone_number: e.target.value }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -204,8 +322,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">ID Card Number</label>
         <input
           type="text"
-            value={idCardNumber}
-          onChange={(e) => setIdCardNumber(e.target.value)}
+          value={formData.patient.id_card_number}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, id_card_number: e.target.value }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -213,8 +333,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Ongoing Treatment</label>
         <input
           type="text"
-            value={ongoingTreatment}
-          onChange={(e) => setOngoingTreatment(e.target.value)}
+          value={formData.patient.ongoing_treatment}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, ongoing_treatment: e.target.value }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -222,8 +344,10 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Unhealthy Habits</label>
         <input
           type="text"
-            value={unhealthyHabits}
-          onChange={(e) => setUnhealthyHabits(e.target.value)}
+          value={formData.patient.unhealthy_habits}
+          onChange={(e) =>
+            setFormData({ ...formData, patient: { ...formData.patient, unhealthy_habits: e.target.value }})
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -232,7 +356,7 @@ const AddPatientForm = () => {
         <input
           type="number"
           min={0}
-            value={numDiseases}
+          value={formData.numDiseases}
           onChange={handleNumDiseaseChange}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
@@ -242,54 +366,52 @@ const AddPatientForm = () => {
         <input
           type="number"
           min={0}
-            value={numDrugAllergies}
+          value={formData.numDrugAllergies}
           onChange={handleNumDrugChange}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
-        {Array.from({ length: numDiseases }).map((_, i) => (
-        <div className="flex flex-col gap-2 col-span-2"
-            key={i}
-        >
-            <label className="text-sm lg:text-md">Chronic Disease ID</label>
-            <input
+      {Array.from({ length: formData.numDiseases }).map((_, i) => (
+        <div className="flex flex-col gap-2 col-span-2" key={i}>
+          <label className="text-sm lg:text-md">Chronic Disease ID</label>
+          <input
             type="text"
             placeholder={`Disease ID ${i + 1}`}
-            value={diseaseIds[i] || ""}
+            value={formData.diseaseIds[i] || ""}
             onChange={(e) => handleDiseaseIdChange(i, e.target.value)}
             className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
-            />
+          />
         </div>
       ))}
-        {Array.from({ length: numDrugAllergies }).map((_, i) => (
-        <div className="flex flex-col gap-2 col-span-2"
-            key={i}
-        >
-            <label className="text-sm lg:text-md">Drug ID</label>
-            <input
+      {Array.from({ length: formData.numDrugAllergies }).map((_, i) => (
+        <div className="flex flex-col gap-2 col-span-2" key={i}>
+          <label className="text-sm lg:text-md">Drug ID</label>
+          <input
             type="text"
             placeholder={`Disease ID ${i + 1}`}
-            value={drugIds[i] || ""}
+            value={formData.drugIds[i] || ""}
             onChange={(e) => handleDrugChange(i, e.target.value)}
             className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
-            />
+          />
         </div>
       ))}
       <div className="col-span-full flex flex-wrap justify-center sm:justify-normal gap-4 mt-4">
-      <button
-        onClick={handleClear}
-        type="button"
-        className="px-8 py-1 bg-white text-[#2C6975] border-2 border-[#2C6975] rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150 ease-in-out"
-      >
-        Reset
-      </button>
-      <button
-        onClick={handleClear}
-        type="button"
-        className="px-8 py-1 bg-[#2C6975] text-white border-2 border-[#2C6975] rounded-md hover:bg-white hover:text-[#2C6975] hover:border-[#2C6975] active:scale-95 active:bg-[#2C6975] active:text-white transition duration-150 ease-in-out"
-      >
-        Done
-      </button>
+        <button
+          onClick={handleClear}
+          type="button"
+          disabled={isLoading}
+          className="px-8 py-1 bg-white text-[#2C6975] border-2 border-[#2C6975] rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150 ease-in-out"
+        >
+          Reset
+        </button>
+        <button
+          onClick={onSubmit}
+          type="button"
+          disabled={isLoading}
+          className="px-8 py-1 bg-[#2C6975] text-white border-2 border-[#2C6975] rounded-md hover:bg-white hover:text-[#2C6975] hover:border-[#2C6975] active:scale-95 active:bg-[#2C6975] active:text-white transition duration-150 ease-in-out"
+        >
+          Done
+        </button>
       </div>
     </form>
   );
