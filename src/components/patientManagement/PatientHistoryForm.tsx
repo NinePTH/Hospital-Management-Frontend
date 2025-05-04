@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useSearchPatient } from "../../hooks/medical_personnel/useAddPatientHistory";
+import { useAddPatientHistory } from "../../hooks/medical_personnel/useAddPatientHistory";
 
 const PatientHistoryForm = () => {
-  const { response, isLoading, handleAddPatientHistory } = useSearchPatient();
+  const { response, isLoading, handleAddPatientHistory } = useAddPatientHistory();
   console.log("Response:", response);
   const [formData, setFormData] = useState({
     patient_id: "",

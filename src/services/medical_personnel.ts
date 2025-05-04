@@ -15,6 +15,13 @@ interface AddPatientHistory {
     detail: string;
 }
 
+interface AddPatientAppointment {
+    patient_id: string;
+    time: string;
+    date: string;
+    topic: string;
+}
+
 export const fetchAllPatient = async () => {
     if (isTokenExpired()) {
         logoutUser();
@@ -48,6 +55,19 @@ export const addPatientHistory = async ( addPatientHistory: AddPatientHistory ) 
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/add-patient-history`,
         addPatientHistory,
+        { headers: { Authorization: `Bearer ${token}` } },
+    );
+    return response.data;
+}
+
+export const addPatientAppointment = async ( addPatientAppointment: AddPatientAppointment ) => {
+    if (isTokenExpired()) {
+        logoutUser();
+        throw new Error("Token expired");
+    }
+    const token = localStorage.getItem("myApp_authToken");
+    const response = await api.post(`/patient/add-patient-appointment`,
+        addPatientAppointment,
         { headers: { Authorization: `Bearer ${token}` } },
     );
     return response.data;

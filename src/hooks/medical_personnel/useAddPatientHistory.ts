@@ -8,7 +8,7 @@ interface AddPatientHistoryInfo {
     detail: string;
 }
 
-export const useSearchPatient = () => {
+export const useAddPatientHistory = () => {
     const [response, setResponse] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -21,7 +21,7 @@ export const useSearchPatient = () => {
             const result = await addPatientHistory(patientHistory);
             setResponse(result);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : "Failed to fetch patient data";
+            const errorMessage = err instanceof Error ? err.message : "Failed to add patient history";
             console.error(errorMessage);
             setError("Could not perform add patient history");
         } finally {
