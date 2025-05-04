@@ -7,8 +7,8 @@ const SearchPatient = () => {
   const { patientsData } = useGetAllPatient();
   const { results, isLoading, handleSearch, error } = useSearchPatient();
   // console.log("Patient Data:", patientsData);
-  console.log("Error:", error);
-  console.log("Results:", results);
+  // console.log("Error:", error);
+  // console.log("Results:", results);
 
   const displayData = results && results.length > 0 ? results : patientsData;
 
