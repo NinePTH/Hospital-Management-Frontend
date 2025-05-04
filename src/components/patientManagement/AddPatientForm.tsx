@@ -4,7 +4,7 @@ const AddPatientForm = () => {
     const [patientID, setPatientID] = useState<string>("");
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
-    const [age, setAge] = useState<number | "">("");
+    const [age, setAge] = useState<number>(0);
     const [dob, setDob] = useState<string>("");
     const [gender, setGender] = useState<string>("");
     const [bloodType, setBloodType] = useState<string>("");
@@ -63,7 +63,7 @@ const AddPatientForm = () => {
         setPatientID("");
         setFirstName("");
         setLastName("");
-        setAge("");
+        setAge(0);
         setDob("");
         setGender("male");
         setBloodType("A");
@@ -115,8 +115,8 @@ const AddPatientForm = () => {
           type="number"
           min={1}
           max={120}
-            value={age}
-          onChange={(e) => setAge(e.target.value === "" ? "" : parseInt(e.target.value))}
+          value={age == 0 ? "" : age}
+          onChange={(e) => setAge(parseInt(e.target.value))}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
