@@ -2,10 +2,17 @@ import { api } from "./api";
 import isTokenExpired from "../hooks/CheckToken";
 import { logoutUser } from "./auth";
 
-interface searchPatient {
+interface SearchPatient {
     patient_id: string;
     first_name: string;
     last_name: string;
+}
+
+interface AddPatientHistory {
+    patient_id: string;
+    time: string;
+    date: string;
+    detail: string;
 }
 
 export const fetchAllPatient = async () => {
@@ -20,7 +27,7 @@ export const fetchAllPatient = async () => {
     return response.data;
 };
 
-export const searchPatient = async ( searchTerm: searchPatient ) => {
+export const searchPatient = async ( searchTerm: SearchPatient ) => {
     if (isTokenExpired()) {
         logoutUser();
         throw new Error("Token expired");
@@ -28,6 +35,19 @@ export const searchPatient = async ( searchTerm: searchPatient ) => {
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/search-patient`,
         searchTerm,
+        { headers: { Authorization: `Bearer ${token}` } },
+    );
+    return response.data;
+}
+
+export const addPatientHistory = async ( addPatientHistory: AddPatientHistory ) => {
+    if (isTokenExpired()) {
+        logoutUser();
+        throw new Error("Token expired");
+    }
+    const token = localStorage.getItem("myApp_authToken");
+    const response = await api.post(`/patient/add-patient-history`,
+        addPatientHistory,
         { headers: { Authorization: `Bearer ${token}` } },
     );
     return response.data;

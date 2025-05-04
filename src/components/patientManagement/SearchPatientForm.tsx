@@ -28,6 +28,11 @@ const SearchPatientForm = ({ isLoading, handleSearch }: SearchPatientFormProps) 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleSearch(formData);
+    setFormData({
+      patient_id: "",
+      first_name: "",
+      last_name: "",
+    })
 };
 
   return (
