@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import { logoutUser } from "../services/auth";
 
 const isTokenExpired = () => {
     const token = localStorage.getItem("myApp_authToken");
@@ -11,4 +12,11 @@ const isTokenExpired = () => {
     return decoded.exp < Date.now() / 1000; // Convert to seconds
 };
 
-export default isTokenExpired
+const logoutIfExpired = () => {
+    if (isTokenExpired()) {
+        logoutUser()
+        throw new Error("Token expired");
+    };
+};
+
+export default logoutIfExpired

@@ -1,4 +1,4 @@
-import isTokenExpired from "../hooks/CheckToken";
+import logoutIfExpired from "../hooks/CheckToken";
 import { api, setAuthToken } from "./api";
 import { jwtDecode } from "jwt-decode";
 
@@ -38,10 +38,7 @@ export const logoutUser = () => {
 
 // Fetch user profile
 export const fetchProfile = async () => {
-  if (isTokenExpired()) {
-    logoutUser();
-    throw new Error("Token expired");
-  }
+  logoutIfExpired()
   const token = localStorage.getItem("myApp_authToken");
   const response = await api.get("/profile",
     { headers: { Authorization: `Bearer ${token}` } }

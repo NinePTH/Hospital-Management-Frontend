@@ -1,6 +1,6 @@
 import { useGetAllPatient } from "../../hooks/medical_personnel/useGetAllPatient";
 import { useSearchPatient } from "../../hooks/medical_personnel/useSearchPatient";
-import PatientInfoSection from "./AllPatientsInfo";
+import PatientInfoSection from "./PatientsInfoSection";
 import SearchPatientForm from "./SearchPatientForm";
 
 const SearchPatient = () => {

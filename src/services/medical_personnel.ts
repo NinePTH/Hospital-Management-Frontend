@@ -1,6 +1,5 @@
 import { api } from "./api";
-import isTokenExpired from "../hooks/CheckToken";
-import { logoutUser } from "./auth";
+import logoutIfExpired from "../hooks/CheckToken";
 
 interface SearchPatient {
     patient_id: string;
@@ -48,10 +47,7 @@ interface AddEditNewPatient {
   }
 
 export const fetchAllPatient = async () => {
-    if (isTokenExpired()) {
-        logoutUser();
-        throw new Error("Token expired");
-    }
+    logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.get(`/patient`,
         { headers: { Authorization: `Bearer ${token}` } }
@@ -60,10 +56,7 @@ export const fetchAllPatient = async () => {
 };
 
 export const searchPatient = async ( searchTerm: SearchPatient ) => {
-    if (isTokenExpired()) {
-        logoutUser();
-        throw new Error("Token expired");
-    }
+    logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/search-patient`,
         searchTerm,
@@ -73,10 +66,7 @@ export const searchPatient = async ( searchTerm: SearchPatient ) => {
 }
 
 export const addPatientHistory = async ( addPatientHistory: AddPatientHistory ) => {
-    if (isTokenExpired()) {
-        logoutUser();
-        throw new Error("Token expired");
-    }
+    logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/add-patient-history`,
         addPatientHistory,
@@ -86,10 +76,7 @@ export const addPatientHistory = async ( addPatientHistory: AddPatientHistory ) 
 }
 
 export const addPatientAppointment = async ( addPatientAppointment: AddPatientAppointment ) => {
-    if (isTokenExpired()) {
-        logoutUser();
-        throw new Error("Token expired");
-    }
+    logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/add-patient-appointment`,
         addPatientAppointment,
@@ -99,10 +86,7 @@ export const addPatientAppointment = async ( addPatientAppointment: AddPatientAp
 }
 
 export const addNewPatient = async ( newPatient: AddEditNewPatient ) => {
-    if (isTokenExpired()) {
-        logoutUser();
-        throw new Error("Token expired");
-    }
+    logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/add-patient`,
         newPatient,
@@ -112,10 +96,7 @@ export const addNewPatient = async ( newPatient: AddEditNewPatient ) => {
 }
 
 export const editPatient = async ( editPatient: AddEditNewPatient ) => {
-    if (isTokenExpired()) {
-        logoutUser();
-        throw new Error("Token expired");
-    }
+    logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.put(`/patient/update-patient`,
         editPatient,
