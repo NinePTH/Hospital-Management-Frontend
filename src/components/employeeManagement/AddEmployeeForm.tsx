@@ -16,7 +16,7 @@ interface AddEmployee {
 
 const AddEmployeeForm = () => {
   const { response, isLoading, handleAddNewEmployee } = useAddNewEmployee();
-    console.log("Response:", response);
+  console.log("Response:", response);
   const [formData, setFormData] = useState<AddEmployee>({
     employee_id: "",
     first_name: "",
@@ -63,44 +63,55 @@ const AddEmployeeForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-4 gap-4 whitespace-nowrap">
+    <form
+      onSubmit={onSubmit}
+      className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-4 gap-4 whitespace-nowrap"
+    >
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Employee ID</label>
         <input
-        required
+          required
           type="text"
           value={formData.employee_id}
-          onChange={(e) => setFormData({ ...formData, employee_id: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, employee_id: e.target.value })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">First Name</label>
         <input
-        required
+          required
           type="text"
           value={formData.first_name}
-          onChange={(e) => setFormData({ ...formData, first_name: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, first_name: e.target.value })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Last Name</label>
         <input
-        required
+          required
           type="text"
           value={formData.last_name}
-          onChange={(e) => setFormData({ ...formData, last_name: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, last_name: e.target.value })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Hire Date</label>
         <input
-        required
+          required
           type="date"
           value={formData.hire_date}
-          onChange={(e) => setFormData({ ...formData, hire_date: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, hire_date: e.target.value })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -108,7 +119,9 @@ const AddEmployeeForm = () => {
         <label className="text-sm lg:text-md">Position</label>
         <select
           value={formData.position_id}
-          onChange={(e) => setFormData({ ...formData, position_id: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, position_id: e.target.value })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
           <option value="" disabled hidden>
@@ -128,20 +141,22 @@ const AddEmployeeForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Salary</label>
         <input
-        required
+          required
           type="text"
           value={formData.salary == 0 ? "" : formData.salary}
-          onChange={(e) => setFormData({ ...formData, salary: parseInt(e.target.value)})}
+          onChange={(e) =>
+            setFormData({ ...formData, salary: parseInt(e.target.value) })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Email</label>
         <input
-        required
+          required
           type="email"
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value})}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="Example@gmail.com"
           pattern=".+@(gmail\.com|hotmail\.com|email\.com)"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
@@ -150,10 +165,12 @@ const AddEmployeeForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Phone Number</label>
         <input
-        required
+          required
           type="text"
           value={formData.phone_number}
-          onChange={(e) => setFormData({ ...formData, phone_number: e.target.value})}
+          onChange={(e) =>
+            setFormData({ ...formData, phone_number: e.target.value })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>

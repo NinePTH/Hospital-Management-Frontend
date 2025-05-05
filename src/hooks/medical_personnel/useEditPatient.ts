@@ -31,12 +31,12 @@ export const useEditPatient = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
-    const handleEditPatient = async (newPatient: PatientData) => {
+    const handleEditPatient = async (editPatientData: PatientData) => {
         setIsLoading(true);
         setError(null);
 
         try {
-            const result = await editPatient(newPatient);
+            const result = await editPatient(editPatientData);
             setResponse(result);
         } catch (err: unknown) {
             console.error(err);

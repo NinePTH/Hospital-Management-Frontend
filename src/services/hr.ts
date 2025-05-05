@@ -7,7 +7,7 @@ interface SearchEmployee {
     last_name: string;
 }
 
-interface AddEmployee {
+interface AddEditEmployee {
     employee_id: string;
     first_name: string;
     last_name: string;
@@ -39,11 +39,21 @@ export const searchEmployee = async ( searchTerm: SearchEmployee ) => {
     return response.data;
 }
 
-export const addNewEmployee = async ( newEmployee: AddEmployee ) => {
+export const addNewEmployee = async ( newEmployee: AddEditEmployee ) => {
     logoutIfExpired()
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/employee/add-employee`,
         newEmployee,
+        { headers: { Authorization: `Bearer ${token}` } },
+    );
+    return response.data;
+}
+
+export const editEmployee = async ( editEmployee: AddEditEmployee ) => {
+    logoutIfExpired()
+    const token = localStorage.getItem("myApp_authToken");
+    const response = await api.put(`/employee/update-employee`,
+        editEmployee,
         { headers: { Authorization: `Bearer ${token}` } },
     );
     return response.data;

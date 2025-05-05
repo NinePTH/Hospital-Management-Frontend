@@ -171,7 +171,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Patient ID</label>
         <input
-        required
           type="text"
           value={formData.patient.patient_id}
           onChange={(e) =>
@@ -187,7 +186,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">First Name</label>
         <input
-        required
           type="text"
           value={formData.patient.first_name}
           onChange={(e) =>
@@ -203,7 +201,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Last Name</label>
         <input
-        required
           type="text"
           value={formData.patient.last_name}
           onChange={(e) =>
@@ -219,7 +216,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Age</label>
         <input
-        required
           type="number"
           min={1}
           max={120}
@@ -237,7 +233,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Date of Birth</label>
         <input
-        required
           type="date"
           value={formData.patient.date_of_birth}
           onChange={(e) =>
@@ -304,7 +299,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Email</label>
         <input
-        required
           type="email"
           value={formData.patient.email}
           onChange={(e) =>
@@ -361,7 +355,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Phone Number</label>
         <input
-        required
           type="text"
           value={formData.patient.phone_number}
           onChange={(e) =>
@@ -377,7 +370,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">ID Card Number</label>
         <input
-        required
           type="text"
           value={formData.patient.id_card_number}
           onChange={(e) =>
@@ -393,7 +385,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Ongoing Treatment</label>
         <input
-        required
           type="text"
           value={formData.patient.ongoing_treatment}
           onChange={(e) =>
@@ -412,7 +403,6 @@ const EditPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Unhealthy Habits</label>
         <input
-        required
           type="text"
           value={formData.patient.unhealthy_habits}
           onChange={(e) =>
@@ -452,7 +442,7 @@ const EditPatientForm = () => {
         <div className="flex flex-col gap-2 col-span-2" key={i}>
           <label className="text-sm lg:text-md">Chronic Disease ID</label>
           <input
-          required
+            required
             type="text"
             placeholder={`Disease ID ${i + 1}`}
             value={formData.diseaseIds[i] || ""}
@@ -465,7 +455,7 @@ const EditPatientForm = () => {
         <div className="flex flex-col gap-2 col-span-2" key={i}>
           <label className="text-sm lg:text-md">Drug ID</label>
           <input
-          required
+            required
             type="text"
             placeholder={`Disease ID ${i + 1}`}
             value={formData.drugIds[i] || ""}
