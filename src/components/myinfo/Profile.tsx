@@ -65,7 +65,7 @@ const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
                 ))}
               </div>
             ) : (
-              <p>No medical history available</p>
+              <p className="space-y-3 pb-4 lg:pb-0 w-full col-span-1 lg:col-span-4 text-center">No medical history available</p>
             )}
         </div>
       </motion.div>
