@@ -3,6 +3,7 @@ export interface PatientData {
     medical_history: MedicalHistory[]
     patient_chronic_disease: PatientChronicDiseases[]
     patient_drug_allergy: PatientDrugAllergy[]
+    patient_appointment: PatientAppointment
   }
 
   interface PatientGeneralInfo {
@@ -32,4 +33,10 @@ export interface PatientData {
 
   interface PatientDrugAllergy {
     drug_id: string[];
+  }
+
+  interface PatientAppointment {
+    time: string;
+    date: string;
+    topic: string;
   }

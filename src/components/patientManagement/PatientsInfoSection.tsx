@@ -35,6 +35,7 @@ const PatientInfoSection = ({ error, patientData }: ProfileSectionProps) => {
                 label: "Ongoing treatment",
                 value: patient.patient.ongoing_treatment,
               },
+              { label: "Latest Appointment", value: patient.patient_appointment.date !== "" ? patient.patient_appointment.date + " " + patient.patient_appointment.time : "No appointment" },
             ];
 
             return (

@@ -3,7 +3,7 @@ import { UserProfile, PatientData } from "../../types";
 
 interface ProfileSectionProps {
   profile: UserProfile | null;
-  patientData?: PatientData | null;
+  patientData: PatientData | null;
 }
 
 const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
@@ -23,6 +23,7 @@ const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
     // { label: "Phone number", value: patientData?.patient.phone_number },
     { label: "ID card number", value: patientData?.patient.id_card_number },
     { label: "Ongoing treatment", value: patientData?.patient.ongoing_treatment },
+    { label: "Latest Appointment", value: patientData?.patient_appointment.date !== "" ? patientData?.patient_appointment.date + " " + patientData?.patient_appointment.time : "No appointment" },
   ];
   
   return (
