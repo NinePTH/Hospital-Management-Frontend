@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { PatientData } from "../types";
-import { fetchAllPatient } from "../services/medical_personnel";
+import { PatientData } from "../../types";
+import { fetchAllPatient } from "../../services/medical_personnel";
 
 export const useGetAllPatient = () => {
     const [patientsData, setPatientData] = useState<PatientData[] | null>(null);
@@ -15,9 +15,7 @@ export const useGetAllPatient = () => {
                 setPatientData(patientDataFromApi);
                 // console.log("Patient Data:", patientData);
             } catch (err: unknown) {
-                const errorMessage =
-                    err instanceof Error ? err.message : "Failed to fetch patient data";
-                console.error(errorMessage);
+                console.error(err);
                 setError("Could not load patient information");
             } finally {
                 setIsLoading(false);

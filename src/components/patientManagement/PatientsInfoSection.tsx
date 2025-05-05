@@ -1,14 +1,19 @@
 import { PatientData } from "../../types";
 
 interface ProfileSectionProps {
+  error?: string | null;
   patientData?: PatientData[] | null;
 }
 
-const PatientInfoSection = ({ patientData }: ProfileSectionProps) => {
+const PatientInfoSection = ({ error, patientData }: ProfileSectionProps) => {
   return (
     <>
       <div className="grid grid-cols-1 gap-10 w-full">
-        {patientData?.length ? (
+        {error != null ? (
+          <p className="col-span-2 text-[#2C6975] text-xl sm:text-2xl text-center">
+            No result
+          </p>
+        ) : patientData?.length ? (
           patientData.map((patient, index) => {
             const patientInfo = [
               { label: "Patient ID", value: patient.patient.patient_id },
@@ -30,6 +35,7 @@ const PatientInfoSection = ({ patientData }: ProfileSectionProps) => {
                 label: "Ongoing treatment",
                 value: patient.patient.ongoing_treatment,
               },
+              { label: "Latest Appointment", value: patient.patient_appointment.date !== "" ? patient.patient_appointment.date + " " + patient.patient_appointment.time : "No appointment" },
             ];
 
             return (
@@ -51,10 +57,7 @@ const PatientInfoSection = ({ patientData }: ProfileSectionProps) => {
                 patient.medical_history.length > 0 ? (
                   <div className="space-y-3 w-full col-span-1 lg:col-span-4">
                     {patient.medical_history.map((record, index) => (
-                      <div
-                        key={index}
-                        className="pb-4 lg:pb-0 text-base"
-                      >
+                      <div key={index} className="border-b pb-2 last:border-b-0 text-sm">
                         <div className="flex justify-between">
                           <span>Date & Time:</span>
                           <span className="text-right">
@@ -67,7 +70,9 @@ const PatientInfoSection = ({ patientData }: ProfileSectionProps) => {
                     ))}
                   </div>
                 ) : (
-                  <p className="space-y-3 pb-4 lg:pb-0 w-full col-span-1 lg:col-span-4 text-center">No medical history available</p>
+                  <p className="space-y-3 pb-4 lg:pb-0 w-full col-span-1 lg:col-span-4 text-center">
+                    No medical history available
+                  </p>
                 )}
               </div>
             );
