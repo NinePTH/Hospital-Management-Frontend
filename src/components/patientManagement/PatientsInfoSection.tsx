@@ -57,7 +57,7 @@ const PatientInfoSection = ({ error, patientData }: ProfileSectionProps) => {
                 patient.medical_history.length > 0 ? (
                   <div className="space-y-3 w-full col-span-1 lg:col-span-4">
                     {patient.medical_history.map((record, index) => (
-                      <div key={index} className="pb-4 lg:pb-0 text-base">
+                      <div key={index} className="border-b pb-2 last:border-b-0 text-sm">
                         <div className="flex justify-between">
                           <span>Date & Time:</span>
                           <span className="text-right">

@@ -35,10 +35,10 @@ const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
       >
         <h1 className="text-3xl md:text-4xl font-playfair">MyInfo</h1>
         <h1 className="text-xl md:text-2xl font-quicksand mb-5 lg:mb-6">Siam Hospital</h1>
-        <div className="flex flex-col lg:flex-row items-start justify-center gap-10">
-          <div className="text-left w-full lg:w-3/4">
+        <div className="grid grid-cols-1 lg:grid-cols-9 place-items-start gap-5 lg:gap-0">
+          <div className="text-left col-span-1 lg:col-span-4 w-full">
             {patientData && patientInfo.map(({ label, value }) => (
-              <div key={label} className="flex justify-between lg:block">
+              <div key={label} className="flex justify-between md:block">
               <span>{label}:</span>
               <span className="text-right">{" "}{value || "-"}</span>
             </div>
@@ -49,10 +49,10 @@ const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
               needed
             </p>
           </div>
-          <div className="border-y h-1/2 w-full lg:w-0 lg:border-r-0 lg:border-l lg:h-[388px] lg:mt-1 border-[#ACACAC]"></div>
+          <div className="place-self-center border-y h-1/2 w-full lg:w-0 lg:border-r-0 lg:border-l lg:h-full lg:mt-1 border-[#ACACAC]"></div>
           {/* ใส่ lg:h-full ไม่ได้ไม่รู้เป็นไร */}
           {patientData?.medical_history && patientData.medical_history.length > 0 ? (
-              <div className="space-y-3 w-full">
+              <div className="space-y-3 w-full col-span-1 lg:col-span-4">
                 {patientData.medical_history.map((record, index) => (
                   <div key={index} className="border-b pb-2 last:border-b-0 text-sm">
                     <div className="flex justify-between">
