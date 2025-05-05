@@ -6,9 +6,9 @@ import SearchEmployeeForm from "./SearchEmployeeForm";
 const SearchEmployee = () => {
   const { employeesData } = useGetAllEmployee();
     const { results, isLoading, handleSearch, error } = useSearchEmployee();
-    console.log("Patient Data:", employeesData);
-    console.log("Error:", error);
-    console.log("Results:", results);
+    // console.log("Patient Data:", employeesData);
+    // console.log("Error:", error);
+    // console.log("Results:", results);
   
     const displayData = results && results.length > 0 ? results : employeesData;
   return (

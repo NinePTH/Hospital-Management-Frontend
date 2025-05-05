@@ -167,10 +167,11 @@ const AddPatientForm = () => {
   };
 
   return (
-    <form className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-8 gap-4 whitespace-nowrap">
+    <form onSubmit={onSubmit} className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-8 gap-4 whitespace-nowrap">
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Patient ID</label>
         <input
+          required
           type="text"
           value={formData.patient.patient_id}
           onChange={(e) =>
@@ -186,6 +187,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">First Name</label>
         <input
+          required
           type="text"
           value={formData.patient.first_name}
           onChange={(e) =>
@@ -201,6 +203,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Last Name</label>
         <input
+          required
           type="text"
           value={formData.patient.last_name}
           onChange={(e) =>
@@ -216,6 +219,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Age</label>
         <input
+          required
           type="number"
           min={1}
           max={120}
@@ -233,6 +237,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Date of Birth</label>
         <input
+          required
           type="date"
           value={formData.patient.date_of_birth}
           onChange={(e) =>
@@ -299,6 +304,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Email</label>
         <input
+          required
           type="email"
           value={formData.patient.email}
           onChange={(e) =>
@@ -308,6 +314,7 @@ const AddPatientForm = () => {
             })
           }
           placeholder="Example@gmail.com"
+          pattern=".+@(gmail\.com|hotmail\.com|email\.com)"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -354,6 +361,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Phone Number</label>
         <input
+          required
           type="text"
           value={formData.patient.phone_number}
           onChange={(e) =>
@@ -369,6 +377,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">ID Card Number</label>
         <input
+          required
           type="text"
           value={formData.patient.id_card_number}
           onChange={(e) =>
@@ -384,6 +393,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Ongoing Treatment</label>
         <input
+          required
           type="text"
           value={formData.patient.ongoing_treatment}
           onChange={(e) =>
@@ -402,6 +412,7 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Unhealthy Habits</label>
         <input
+          required
           type="text"
           value={formData.patient.unhealthy_habits}
           onChange={(e) =>
@@ -441,6 +452,7 @@ const AddPatientForm = () => {
         <div className="flex flex-col gap-2 col-span-2" key={i}>
           <label className="text-sm lg:text-md">Chronic Disease ID</label>
           <input
+            required
             type="text"
             placeholder={`Disease ID ${i + 1}`}
             value={formData.diseaseIds[i] || ""}
@@ -453,6 +465,7 @@ const AddPatientForm = () => {
         <div className="flex flex-col gap-2 col-span-2" key={i}>
           <label className="text-sm lg:text-md">Drug ID</label>
           <input
+            required
             type="text"
             placeholder={`Disease ID ${i + 1}`}
             value={formData.drugIds[i] || ""}
@@ -471,7 +484,6 @@ const AddPatientForm = () => {
           Reset
         </button>
         <button
-          onClick={onSubmit}
           type="submit"
           disabled={isLoading}
           className="px-8 py-1 bg-[#2C6975] text-white border-2 border-[#2C6975] rounded-md hover:bg-white hover:text-[#2C6975] hover:border-[#2C6975] active:scale-95 active:bg-[#2C6975] active:text-white transition duration-150 ease-in-out"

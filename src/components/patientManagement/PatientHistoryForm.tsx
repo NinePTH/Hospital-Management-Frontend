@@ -34,10 +34,11 @@ const PatientHistoryForm = () => {
   };
 
   return (
-    <form className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-4 gap-4 whitespace-nowrap">
+    <form onSubmit={onSubmit} className="w-full grid grid-cols-2 lg:grid-cols-4 grid-rows-4 gap-4 whitespace-nowrap">
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Patient ID</label>
         <input
+          required
           type="text"
           value={formData.patient_id}
           onChange={(e) =>
@@ -50,6 +51,7 @@ const PatientHistoryForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Time</label>
         <input
+          required
           type="text"
           value={formData.time}
           onChange={(e) => setFormData({ ...formData, time: e.target.value })}
@@ -69,6 +71,7 @@ const PatientHistoryForm = () => {
       <div className="flex flex-col gap-2 col-span-2">
         <label className="text-sm lg:text-md">Date</label>
         <input
+          required
           type="date"
           value={formData.date}
           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
@@ -86,8 +89,7 @@ const PatientHistoryForm = () => {
           Reset
         </button>
         <button
-          onClick={onSubmit}
-          type="button"
+          type="submit"
           disabled={isLoading}
           className="px-8 py-1 bg-[#2C6975] text-white border-2 border-[#2C6975] rounded-md hover:bg-white hover:text-[#2C6975] hover:border-[#2C6975] active:scale-95 active:bg-[#2C6975] active:text-white transition duration-150 ease-in-out"
         >
