@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useAddPatientHistory } from "../../hooks/medical_personnel/useAddPatientHistory";
 
 const PatientHistoryForm = () => {
-  const { response, isLoading, handleAddPatientHistory } = useAddPatientHistory();
+  const { response, isLoading, handleAddPatientHistory } =
+    useAddPatientHistory();
   console.log("Response:", response);
   const [formData, setFormData] = useState({
     patient_id: "",
@@ -42,6 +43,7 @@ const PatientHistoryForm = () => {
           onChange={(e) =>
             setFormData({ ...formData, patient_id: e.target.value })
           }
+          placeholder="PXXX"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -51,6 +53,7 @@ const PatientHistoryForm = () => {
           type="text"
           value={formData.time}
           onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+          placeholder="10:50:45"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -59,6 +62,7 @@ const PatientHistoryForm = () => {
         <textarea
           value={formData.detail}
           onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
+          placeholder="The patient reports experiencing persistent symptoms for several consecutive days, including cough, fever, nasal congestion, and headache. The patient suspects they may be ill. Symptoms are consistent with a possible upper respiratory tract infection, influenza, or COVID-19. Recommend further evaluation and monitoring of vital signs. Advise physician consultation if symptoms worsen or persist beyond expected duration."
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full resize-none"
         />
       </div>

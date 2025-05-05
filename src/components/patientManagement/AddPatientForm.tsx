@@ -142,26 +142,28 @@ const AddPatientForm = () => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleAddNewPatient(transformForApi(formData));
-    // setFormData({
-    //   patient_id: "",
-    //   first_name: "",
-    //   last_name: "",
-    //   age: 0,
-    //   date_of_birth: "",
-    //   gender: "",
-    //   blood_type: "",
-    //   email: "",
-    //   health_insurance: "",
-    //   address: "",
-    //   phone_number: "",
-    //   id_card_number: "",
-    //   ongoing_treatment: "",
-    //   unhealthy_habits: "",
-    //   numDiseases: 0,
-    //   diseaseIds: [],
-    //   numDrugAllergies: 0,
-    //   drugIds: [],
-    // });
+    setFormData({
+      patient: {
+        patient_id: "",
+        first_name: "",
+        last_name: "",
+        age: 0,
+        date_of_birth: "",
+        gender: "",
+        blood_type: "",
+        email: "",
+        health_insurance: "",
+        address: "",
+        phone_number: "",
+        id_card_number: "",
+        ongoing_treatment: "",
+        unhealthy_habits: "",
+      },
+      numDiseases: 0,
+      diseaseIds: [],
+      numDrugAllergies: 0,
+      drugIds: [],
+    });
   };
 
   return (
@@ -172,8 +174,12 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.patient_id}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, patient_id: e.target.value } })
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, patient_id: e.target.value },
+            })
           }
+          placeholder="PXXX"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -183,8 +189,12 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.first_name}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, first_name: e.target.value } })
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, first_name: e.target.value },
+            })
           }
+          placeholder="John"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -194,8 +204,12 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.last_name}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, last_name: e.target.value} })
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, last_name: e.target.value },
+            })
           }
+          placeholder="Doe"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -207,8 +221,12 @@ const AddPatientForm = () => {
           max={120}
           value={formData.patient.age == 0 ? "" : formData.patient.age}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, age: parseInt(e.target.value) }})
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, age: parseInt(e.target.value) },
+            })
           }
+          placeholder="20"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -218,7 +236,10 @@ const AddPatientForm = () => {
           type="date"
           value={formData.patient.date_of_birth}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, date_of_birth: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, date_of_birth: e.target.value },
+            })
           }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
@@ -227,7 +248,12 @@ const AddPatientForm = () => {
         <label className="text-sm lg:text-md">Gender</label>
         <select
           value={formData.patient.gender}
-          onChange={(e) => setFormData({ ...formData, patient: { ...formData.patient, gender: e.target.value }})}
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, gender: e.target.value },
+            })
+          }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
           <option value="" disabled hidden>
@@ -246,7 +272,10 @@ const AddPatientForm = () => {
         <select
           value={formData.patient.blood_type}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, blood_type: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, blood_type: e.target.value },
+            })
           }
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
@@ -272,7 +301,13 @@ const AddPatientForm = () => {
         <input
           type="email"
           value={formData.patient.email}
-          onChange={(e) => setFormData({ ...formData, patient: { ...formData.patient, email: e.target.value }})}
+          onChange={(e) =>
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, email: e.target.value },
+            })
+          }
+          placeholder="Example@gmail.com"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -281,7 +316,13 @@ const AddPatientForm = () => {
         <select
           value={formData.patient.health_insurance}
           onChange={(e) => {
-            setFormData({ ...formData, patient: { ...formData.patient, health_insurance: e.target.value }});
+            setFormData({
+              ...formData,
+              patient: {
+                ...formData.patient,
+                health_insurance: e.target.value,
+              },
+            });
           }}
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         >
@@ -299,11 +340,14 @@ const AddPatientForm = () => {
       <div className="flex flex-col gap-2 col-span-2 lg:col-span-4 row-span-2">
         <label className="text-sm lg:text-md">Address</label>
         <textarea
-          // type="text"
           value={formData.patient.address}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, address: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, address: e.target.value },
+            })
           }
+          placeholder="100 Finn-Huemer-Weg Heindlgasse 94a Oberösterreich Stadtschlaining 2483"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full resize-none"
         />
       </div>
@@ -313,8 +357,12 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.phone_number}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, phone_number: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, phone_number: e.target.value },
+            })
           }
+          placeholder="0123456789"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -324,8 +372,12 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.id_card_number}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, id_card_number: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: { ...formData.patient, id_card_number: e.target.value },
+            })
           }
+          placeholder="1234567890123"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -335,8 +387,15 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.ongoing_treatment}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, ongoing_treatment: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: {
+                ...formData.patient,
+                ongoing_treatment: e.target.value,
+              },
+            })
           }
+          placeholder="None"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -346,8 +405,15 @@ const AddPatientForm = () => {
           type="text"
           value={formData.patient.unhealthy_habits}
           onChange={(e) =>
-            setFormData({ ...formData, patient: { ...formData.patient, unhealthy_habits: e.target.value }})
+            setFormData({
+              ...formData,
+              patient: {
+                ...formData.patient,
+                unhealthy_habits: e.target.value,
+              },
+            })
           }
+          placeholder="None"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975] h-full"
         />
       </div>
@@ -406,7 +472,7 @@ const AddPatientForm = () => {
         </button>
         <button
           onClick={onSubmit}
-          type="button"
+          type="submit"
           disabled={isLoading}
           className="px-8 py-1 bg-[#2C6975] text-white border-2 border-[#2C6975] rounded-md hover:bg-white hover:text-[#2C6975] hover:border-[#2C6975] active:scale-95 active:bg-[#2C6975] active:text-white transition duration-150 ease-in-out"
         >

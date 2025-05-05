@@ -43,6 +43,7 @@ const SearchPatientForm = ({ isLoading, handleSearch }: SearchPatientFormProps) 
           type="text"
           value={formData.patient_id}
           onChange={(e) => setFormData({ ...formData, patient_id: e.target.value})}
+          placeholder="PXXX"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -52,6 +53,7 @@ const SearchPatientForm = ({ isLoading, handleSearch }: SearchPatientFormProps) 
           type="text"
           value={formData.first_name}
           onChange={(e) => setFormData({ ...formData, first_name: e.target.value})}
+          placeholder="John"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>
@@ -61,6 +63,7 @@ const SearchPatientForm = ({ isLoading, handleSearch }: SearchPatientFormProps) 
           type="text"
           value={formData.last_name}
           onChange={(e) => setFormData({ ...formData, last_name: e.target.value})}
+          placeholder="Doe"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
       </div>

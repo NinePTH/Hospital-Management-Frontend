@@ -22,7 +22,7 @@ interface AddPatientAppointment {
     topic: string;
 }
 
-interface AddNewPatient {
+interface AddEditNewPatient {
     patient: {
         patient_id: string;
         first_name: string;
@@ -98,7 +98,7 @@ export const addPatientAppointment = async ( addPatientAppointment: AddPatientAp
     return response.data;
 }
 
-export const addNewPatient = async ( newPatient: AddNewPatient ) => {
+export const addNewPatient = async ( newPatient: AddEditNewPatient ) => {
     if (isTokenExpired()) {
         logoutUser();
         throw new Error("Token expired");
@@ -106,6 +106,19 @@ export const addNewPatient = async ( newPatient: AddNewPatient ) => {
     const token = localStorage.getItem("myApp_authToken");
     const response = await api.post(`/patient/add-patient`,
         newPatient,
+        { headers: { Authorization: `Bearer ${token}` } },
+    );
+    return response.data;
+}
+
+export const editPatient = async ( editPatient: AddEditNewPatient ) => {
+    if (isTokenExpired()) {
+        logoutUser();
+        throw new Error("Token expired");
+    }
+    const token = localStorage.getItem("myApp_authToken");
+    const response = await api.put(`/patient/update-patient`,
+        editPatient,
         { headers: { Authorization: `Bearer ${token}` } },
     );
     return response.data;
