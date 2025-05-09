@@ -5,14 +5,14 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
     "patients-management": [
       { path: "add-patient", icon: "/sidebar/addPatientIcon.webp", alt: "Add Patient", label: "Add Patient" },
       { path: "edit-patient", icon: "/sidebar/editPatientIcon.webp", alt: "Edit Patient", label: "Edit Patient" },
-      { path: "add-patient-apppointment", icon: "/sidebar/patientAppointmentIcon.webp", alt: "Patient Appointment", label: "Patient Appointment" },
-      { path: "add-patient-medical-history", icon: "/sidebar/patientHistoryIcon.webp", alt: "Patient History", label: "Add History" },
+      { path: "add-patient-appointment", icon: "/sidebar/patientAppointmentIcon.webp", alt: "Patient Appointment", label: "Patient Appointment" },
+      { path: "add-patient-medical-history", icon: "/sidebar/patientHistoryIcon.webp", alt: "Patient History", label: "Patient History" },
       { path: "search-patient", icon: "/sidebar/patientInformationIcon.webp", alt: "Patient Information", label: "Patient Information" },
     ],
-    "employee-management": [
-      { path: "add-employee", icon: "/sidebar/addEmployeeIcon.webp", alt: "Add Employee", label: "Add Employee" },
-      { path: "edit-employee", icon: "/sidebar/editEmployeeIcon.webp", alt: "Edit Employee", label: "Edit Employee" },
-      { path: "search-employee", icon: "/sidebar/searchEmployeeIcon.webp", alt: "Employee Information", label: "Employee Information" },
+    "employees-management": [
+      { path: "add-employee", icon: "/sidebar/addPatientIcon.webp", alt: "Add Employee", label: "Add Employee" },
+      { path: "edit-employee", icon: "/sidebar/editPatientIcon.webp", alt: "Edit Employee", label: "Edit Employee" },
+      { path: "search-employee", icon: "/sidebar/patientInformationIcon.webp", alt: "Employee Information", label: "Employee Information" },
     ],
   };
   
@@ -25,7 +25,7 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
   const links = sidebarLinks[basePath] || [];
 
   return (
-    <nav className="sticky top-0 bg-white shadow-soft min-h-dvh h-full lg:w-1/3 flex flex-col items-start justify-start gap-8 pt-28">
+    <nav className="hidden sticky top-0 bg-white shadow-soft min-h-dvh h-full lg:w-1/3 lg:flex flex-col items-start justify-start gap-8 pt-28">
       <p className="text-base leading-5 font-semibold text-[#2C6975] px-10 w-full capitalize">
         {basePath.replace("-", " ")} System
       </p>
@@ -49,7 +49,7 @@ const sidebarLinks: Record<string, { path: string; icon: string; alt: string; la
                 alt={link.alt}
                 className="h-5"
               />
-              <div className="text-xl">
+              <div className="text-base xl:text-xl">
                 {link.label}
               </div>
             </Link>

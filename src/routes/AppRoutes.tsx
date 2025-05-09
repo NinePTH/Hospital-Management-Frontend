@@ -7,25 +7,27 @@ import RoleBasedRoute from "../components/utils/RoleBasedRoute";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import PatientManagement from "../pages/PatientManagement";
+import EmployeeManagement from "../pages/EmployeeManagement";
 
 const AppRoutes = () => {
   const auth = useContext(AuthContext);
 
-  const HomeRoute = () => {
+  const Service = () => {
     if (!auth?.isAuthenticated) {
-      return <Home />;
+      return <Auth />;
     }
     if (auth?.userRole === "patient") return <Navigate to="/patient-profile" />;
     else if (auth?.userRole === "HR")
-      return <Navigate to="/employees-management" />;
+      return <Navigate to="/employees-management/add-employee" />;
     else if (auth?.userRole === "medical_personnel")
-      return <Navigate to="/patients-management" />;
-    return <Home />;
+      return <Navigate to="/patients-management/add-patient" />;
+    return <Auth />;
   };
   return (
     <Routes>
-      <Route path="/" element={<HomeRoute />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Auth />} />
+      <Route path="/system" element={<Service />} />
       <Route
         path="/patient-profile"
         element={
@@ -34,6 +36,7 @@ const AppRoutes = () => {
           </RoleBasedRoute>
         }
       />
+
       <Route
         path="/patients-management"
         element={
@@ -47,6 +50,71 @@ const AppRoutes = () => {
         element={
           <RoleBasedRoute allowedRoles={["medical_personnel"]}>
             <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/patients-management/edit-patient"
+        element={
+          <RoleBasedRoute allowedRoles={["medical_personnel"]}>
+            <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/patients-management/add-patient-appointment"
+        element={
+          <RoleBasedRoute allowedRoles={["medical_personnel"]}>
+            <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/patients-management/add-patient-medical-history"
+        element={
+          <RoleBasedRoute allowedRoles={["medical_personnel"]}>
+            <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/patients-management/search-patient"
+        element={
+          <RoleBasedRoute allowedRoles={["medical_personnel"]}>
+            <PatientManagement />
+          </RoleBasedRoute>
+        }
+      />
+
+      <Route
+        path="/employees-management"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/employees-management/add-employee"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/employees-management/edit-employee"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/employees-management/search-employee"
+        element={
+          <RoleBasedRoute allowedRoles={["HR"]}>
+            <EmployeeManagement />
           </RoleBasedRoute>
         }
       />
