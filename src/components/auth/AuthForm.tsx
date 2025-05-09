@@ -75,7 +75,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
         )}
         
         <AuthToggle isLoginForm={isLogin} setIsLoginForm={setIsLoginForm} />
-        <button type="submit" className="bg-[#2C6975] text-white py-1 px-1 lg:py-2 lg:px-2 rounded-md mt-4 active:scale-95 active:bg-[#25444e] transition duration-150">
+        <button type="submit" className="bg-[#2C6975] text-white py-1 px-1 lg:py-2 lg:px-2 rounded-md mt-4 border-2 border-[#2C6975] hover:bg-white hover:text-[#2C6975] active:scale-95 active:bg-[#2C6975] active:text-white transition duration-150">
           {isLogin ? "Login" : "Register"}
         </button>
       </div>
