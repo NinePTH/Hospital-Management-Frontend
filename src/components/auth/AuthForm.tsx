@@ -31,16 +31,20 @@ const AuthForm: React.FC<AuthFormProps> = ({
       <div className="flex flex-col">
         <label className="text-sm lg:text-md">Username</label>
         <input
+          required
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder="patient"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
         <label className="text-sm lg:text-md">Password</label>
         <input
+          required
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="*******"
           className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 mb-4 focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
         />
         
@@ -60,6 +64,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
             
             <label className="text-sm lg:text-md">ID</label>
             <input
+              required
               type="text"
               value={id}
               onChange={(e) => setId(e.target.value)}
