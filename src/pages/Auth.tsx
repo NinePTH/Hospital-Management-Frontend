@@ -42,7 +42,8 @@ const Auth:React.FC = (): JSX.Element => {
         <Navbar />
         <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }} className="flex flex-col items-center justify-center shadow-soft rounded-md w-fit h-fit p-10 lg:p-12 bg-white">
+        animate={{ scale: 1, opacity: 1 }} 
+        className="max-w-[70dvw] md:max-w-[50dvw] lg:max-w-[40dvw] flex flex-col items-center justify-center shadow-soft rounded-md w-fit h-fit p-10 lg:p-12 bg-white">
           <h2 className="text-3xl mb-1 lg:text-4xl lg:mb-2 font-playfair">
             {isLoginForm ? "Login" : "Register"}
           </h2>
