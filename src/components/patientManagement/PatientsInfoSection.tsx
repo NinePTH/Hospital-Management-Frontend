@@ -35,7 +35,15 @@ const PatientInfoSection = ({ error, patientData }: ProfileSectionProps) => {
                 label: "Ongoing treatment",
                 value: patient.patient.ongoing_treatment,
               },
-              { label: "Latest Appointment", value: patient.patient_appointment.date !== "" ? patient.patient_appointment.date + " " + patient.patient_appointment.time : "No appointment" },
+              {
+                label: "Latest Appointment",
+                value:
+                  patient.patient_appointment.date !== ""
+                    ? patient.patient_appointment.date +
+                      " " +
+                      patient.patient_appointment.time
+                    : "No appointment",
+              },
             ];
 
             return (
@@ -50,6 +58,36 @@ const PatientInfoSection = ({ error, patientData }: ProfileSectionProps) => {
                       <span className="text-right"> {value || "-"}</span>
                     </div>
                   ))}
+                  {patient.patient_drug_allergy &&
+                  patient.patient_drug_allergy.length > 0 ? (
+                    <div className="flex justify-between md:block">
+                      <span>Drug Allergies:</span>
+                      <ul className="list-decimal list-inside pl-2">
+                        {patient.patient_drug_allergy.map((allergy, index) => (
+                          <li key={index}>{allergy.drug_id || "-"}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <p className="text-left">
+                      No drug allergies.
+                    </p>
+                  )}
+                  {patient.patient_chronic_disease &&
+                  patient.patient_chronic_disease.length > 0 ? (
+                    <div className="flex justify-between md:block">
+                      <span>Chronic Diseases:</span>
+                      <ul className="list-decimal list-inside pl-2">
+                        {patient.patient_chronic_disease.map((allergy, index) => (
+                          <li key={index}>{allergy.disease_id || "-"}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <p className="text-left">
+                      No chronic diseases.
+                    </p>
+                  )}
                 </div>
                 <div className="place-self-center border-y h-1/2 w-full lg:w-0 lg:border-r-0 lg:border-l lg:h-full lg:mt-1 border-[#ACACAC]"></div>
                 {/* ใส่ lg:h-full ไม่ได้ไม่รู้เป็นไร */}
@@ -57,7 +95,10 @@ const PatientInfoSection = ({ error, patientData }: ProfileSectionProps) => {
                 patient.medical_history.length > 0 ? (
                   <div className="space-y-3 w-full col-span-1 lg:col-span-4">
                     {patient.medical_history.map((record, index) => (
-                      <div key={index} className="border-b pb-2 last:border-b-0 text-sm">
+                      <div
+                        key={index}
+                        className="border-b pb-2 last:border-b-0 text-sm"
+                      >
                         <div className="flex justify-between">
                           <span>Date & Time:</span>
                           <span className="text-right">

@@ -28,11 +28,11 @@ export interface PatientData {
   }
 
   interface PatientChronicDiseases {
-    disease_id: string[];
+    disease_id: string;
   }
 
   interface PatientDrugAllergy {
-    drug_id: string[];
+    drug_id: string;
   }
 
   interface PatientAppointment {

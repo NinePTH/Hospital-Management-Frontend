@@ -43,6 +43,36 @@ const ProfileSection = ({ profile, patientData }: ProfileSectionProps) => {
               <span className="text-right">{" "}{value || "-"}</span>
             </div>
             ))}
+            {patientData?.patient_drug_allergy &&
+                  patientData?.patient_drug_allergy.length > 0 ? (
+                    <div className="flex justify-between md:block">
+                      <span>Drug Allergies:</span>
+                      <ul className="list-decimal list-inside pl-2">
+                        {patientData?.patient_drug_allergy.map((allergy, index) => (
+                          <li key={index}>{allergy.drug_id || "-"}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <p className="text-left">
+                      No drug allergies.
+                    </p>
+                  )}
+                  {patientData?.patient_chronic_disease &&
+                  patientData?.patient_chronic_disease.length > 0 ? (
+                    <div className="flex justify-between md:block">
+                      <span>Chronic Diseases:</span>
+                      <ul className="list-decimal list-inside pl-2">
+                        {patientData?.patient_chronic_disease.map((allergy, index) => (
+                          <li key={index}>{allergy.disease_id || "-"}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <p className="text-left">
+                      No chronic diseases.
+                    </p>
+                  )}
             <p className="mt-3 text-xs">
               Contact the{" "}
               <u className="text-[#2C6975] cursor-pointer">Help Desk</u> if
