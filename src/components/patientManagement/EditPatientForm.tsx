@@ -450,54 +450,6 @@ const EditPatientForm = () => {
             <option value="" disabled hidden>
               Select disease ID
             </option>
-            <option value="R001" className="py-2">
-              anti bacteria
-            </option>
-            <option value="R002" className="py-2">
-              paracetamol
-            </option>
-            <option value="R003" className="py-2">
-              amoxicillin
-            </option>
-            <option value="R004" className="py-2">
-              ibuprofen
-            </option>
-            <option value="R005" className="py-2">
-              azithromycin
-            </option>
-            <option value="R006" className="py-2">
-              ciprofloxacin
-            </option>
-            <option value="R007" className="py-2">
-              metformin
-            </option>
-            <option value="R008" className="py-2">
-              omeprazole
-            </option>
-            <option value="R009" className="py-2">
-              atorvastatin
-            </option>
-            <option value="R010" className="py-2">
-              insulin
-            </option>
-            <option value="R011" className="py-2">
-              lisinopril
-            </option>
-          </select>
-        </div>
-      ))}
-      {Array.from({ length: formData.numDrugAllergies }).map((_, i) => (
-        <div className="flex flex-col gap-2 col-span-2" key={i}>
-          <label className="text-sm lg:text-md">Drug ID</label>
-          <select
-            value={formData.diseaseIds[i] || ""}
-            onChange={(e) => handleDrugChange(i, e.target.value)}
-            required
-            className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
-          >
-            <option value="" disabled hidden>
-              Select drug ID
-            </option>
             <option value="I001" className="py-2">
               streptococcus pneumoniae
             </option>
@@ -530,6 +482,54 @@ const EditPatientForm = () => {
             </option>
             <option value="I011" className="py-2">
               meningitis
+            </option>
+          </select>
+        </div>
+      ))}
+      {Array.from({ length: formData.numDrugAllergies }).map((_, i) => (
+        <div className="flex flex-col gap-2 col-span-2" key={i}>
+          <label className="text-sm lg:text-md">Drug ID</label>
+          <select
+            value={formData.drugIds[i] || ""}
+            onChange={(e) => handleDrugChange(i, e.target.value)}
+            required
+            className="text-sm border border-[#ACACAC] rounded-md py-1 px-2 lg:py-2 lg:px-4 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#2C6975]"
+          >
+            <option value="" disabled hidden>
+              Select drug ID
+            </option>
+            <option value="R001" className="py-2">
+              anti bacteria
+            </option>
+            <option value="R002" className="py-2">
+              paracetamol
+            </option>
+            <option value="R003" className="py-2">
+              amoxicillin
+            </option>
+            <option value="R004" className="py-2">
+              ibuprofen
+            </option>
+            <option value="R005" className="py-2">
+              azithromycin
+            </option>
+            <option value="R006" className="py-2">
+              ciprofloxacin
+            </option>
+            <option value="R007" className="py-2">
+              metformin
+            </option>
+            <option value="R008" className="py-2">
+              omeprazole
+            </option>
+            <option value="R009" className="py-2">
+              atorvastatin
+            </option>
+            <option value="R010" className="py-2">
+              insulin
+            </option>
+            <option value="R011" className="py-2">
+              lisinopril
             </option>
           </select>
         </div>
