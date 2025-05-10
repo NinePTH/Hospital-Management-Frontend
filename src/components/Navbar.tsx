@@ -44,14 +44,14 @@ const Navbar: React.FC = () => {
   const authButton = auth?.isAuthenticated ? (
     <button
       onClick={handleLogout}
-      className="bg-white font-medium text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-6 text-xl lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150"
+      className="bg-white font-medium text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-6 text-xl lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150 cursor-pointer"
     >
       Logout
     </button>
   ) : (
     <button
       onClick={handleLogin}
-      className="bg-white font-medium text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-6 text-xl lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150"
+      className="bg-white font-medium text-[#2C6975] border-[2px] border-[#2C6975] py-1 px-6 text-xl lg:text-lg rounded-md hover:bg-[#2C6975] hover:text-white active:scale-95 active:bg-white active:text-[#2C6975] transition duration-150 cursor-pointer"
     >
       Login
     </button>
