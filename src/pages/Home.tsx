@@ -4,10 +4,27 @@ import Hero from "../components/home/Hero";
 import HospitalCharacter from "../components/home/HospitalCharacter";
 import LastCTA from "../components/home/LastCTA";
 import Navbar from "../components/Navbar";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: { opacity: 0 },
+  in: { opacity: 1 },
+  out: { opacity: 0 },
+};
+
+const pageTransition = {
+  duration: 0.5,
+};
 
 const Home: React.FC = (): JSX.Element => {
   return (
-    <div>
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <Navbar />
       <Hero />
       <HospitalCharacter />
@@ -16,7 +33,7 @@ const Home: React.FC = (): JSX.Element => {
       </div>
       <LastCTA />
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
