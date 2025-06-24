@@ -17,9 +17,9 @@ const pageTransition = {
 };
 
 const Auth: React.FC = (): JSX.Element => {
-  const [isLoginForm, setIsLoginForm] = useState(true);
-  const [message, setMessage] = useState("");
-  const [messageStyle, setMessageStyle] = useState("");
+  const [isLoginForm, setIsLoginForm] = useState<boolean>(true);
+  const [message, setMessage] = useState<string>("");
+  const [messageStyle, setMessageStyle] = useState<string>("");
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
